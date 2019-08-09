@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuyib.github.io/manifest.json</loc>
+    
+    <lastmod>2019-08-09T12:35:24.791Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuyib.github.io/friends/index.html</loc>
     
     <lastmod>2019-08-09T11:53:22.548Z</lastmod>
