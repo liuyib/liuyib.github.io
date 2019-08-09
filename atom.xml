@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>liuyib`s blog</title>
+  
+  <subtitle>write code and love life</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://liuyib.github.io/"/>
+  <updated>2019-08-03T11:37:09.959Z</updated>
+  <id>https://liuyib.github.io/</id>
+  
+  <author>
+    <name>liuyib</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>theme-stun-gitter</title>
+    <link href="https://liuyib.github.io/2019/07/26/theme-stun-gitter/"/>
+    <id>https://liuyib.github.io/2019/07/26/theme-stun-gitter/</id>
+    <published>2019-07-26T01:38:55.000Z</published>
+    <updated>2019-08-03T11:37:09.959Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;This is a link for Gitter of theme-stun. Clicking on the title to
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端单元测试和持续集成</title>
+    <link href="https://liuyib.github.io/2019/06/04/%E5%89%8D%E7%AB%AF%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    <id>https://liuyib.github.io/2019/06/04/前端单元测试和持续集成/</id>
+    <published>2019-06-04T14:54:49.000Z</published>
+    <updated>2019-08-03T11:37:09.963Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经常使用 Github 的同学应该知道，一些开源项目中常常会挂上很多花花绿绿了的小徽章，比如 vue 的：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/images/loading.svg&quot; alt class=&quot;lazyload gif&quot; data-src=&quot;https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/post/20190604131517.png&quot;&gt;&lt;/p&gt;&lt;p&gt;这些徽章不仅起到装饰 README 的作用，更给人以安全可靠的感觉。由于好奇，自己也探究了一番。&lt;/p&gt;&lt;h2 id=&quot;给项目装上徽章&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#给项目装上徽章&quot;&gt;&lt;/a&gt; 给项目装上徽章&lt;/h2&gt;&lt;p&gt;想要获取徽章，有很多方式，最简单的可以通过 &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;shields.io&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt; 网站获取，基本上想要的徽章都能获取到，没有的也可以进行 DIY，很方便。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端自动化" scheme="https://liuyib.github.io/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+      <category term="单元测试" scheme="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="持续集成" scheme="https://liuyib.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    
+      <category term="Github徽章" scheme="https://liuyib.github.io/tags/Github%E5%BE%BD%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Stun</title>
+    <link href="https://liuyib.github.io/2019/05/15/hello-stun/"/>
+    <id>https://liuyib.github.io/2019/05/15/hello-stun/</id>
+    <published>2019-05-15T14:54:49.000Z</published>
+    <updated>2019-08-03T11:37:09.958Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;欢迎使用漂亮的 hexo 主题 &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Stun&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;。在这里你可以看到 stun 的部分功能，要想查看全部功能请访问：&lt;a href=&quot;https://liuyib.github.io/hexo-theme-stun/zh-CN/&quot;&gt;https://liuyib.github.io/hexo-theme-stun/zh-CN/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;如果你使用 stun 时遇到了问题，可以在&lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;寻找答案或进行提问。当然如果你有好的建议，欢迎发起 &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;issue&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;，如果想要贡献代码，欢迎 &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun/pulls&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PR&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="hexo-theme" scheme="https://liuyib.github.io/categories/hexo-theme/"/>
+    
+      <category term="stun" scheme="https://liuyib.github.io/categories/hexo-theme/stun/"/>
+    
+      <category term="测试文章" scheme="https://liuyib.github.io/categories/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="hexo-theme" scheme="https://liuyib.github.io/tags/hexo-theme/"/>
+    
+      <category term="stun" scheme="https://liuyib.github.io/tags/stun/"/>
+    
+      <category term="demo" scheme="https://liuyib.github.io/tags/demo/"/>
+    
+  </entry>
+  
+</feed>
