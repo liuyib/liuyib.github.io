@@ -34,9 +34,13 @@ toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
 
 
-toolbox.router.any(/.*\.(js|css|html|jpg|jpeg|png|gif|svg|json|xml|eot|ttf|woff|woff2)$/, toolbox.cacheFirst);
+toolbox.router.any(/.*\.(js|css|html|jpg|jpeg|png|svg|gif|json|xml|eot|ttf|woff|woff2)$/, toolbox.cacheFirst);
 
 toolbox.router.any(/\//, toolbox.networkFirst);
 
+toolbox.router.any(/raw.githubusercontent.com/, toolbox.cacheFirst);
+
 toolbox.router.any(/cdn.jsdelivr.net/, toolbox.cacheFirst);
+
+toolbox.router.any(/cdn.viglink.com/, toolbox.cacheFirst);
 
