@@ -24,6 +24,8 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
+  precacheUrls.push('/2019/08/20/从0到1开发Hexo主题杂谈/');
+
   precacheUrls.push('/2019/07/26/theme-stun-gitter/');
 
   precacheUrls.push('/2019/06/04/前端单元测试和持续集成/');
