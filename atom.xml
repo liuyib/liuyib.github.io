@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2019-08-29T15:28:35.398Z</updated>
+  <updated>2019-08-30T15:18:26.153Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://liuyib.github.io/2019/08/20/%E4%BB%8E0%E5%88%B01%E5%BC%80%E5%8F%91Hexo%E4%B8%BB%E9%A2%98%E6%9D%82%E8%B0%88/"/>
     <id>https://liuyib.github.io/2019/08/20/从0到1开发Hexo主题杂谈/</id>
     <published>2019-08-20T10:20:24.000Z</published>
-    <updated>2019-08-29T15:28:35.398Z</updated>
+    <updated>2019-08-30T15:18:26.153Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt; 前言&lt;/h2&gt;&lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github Issue 里写&lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/blog/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。又想到如果文章多的时候，使用 Github Issue 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt; 前言&lt;/h2&gt;&lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github Issue 里写&lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/blog/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github Issue 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;&lt;p&gt;使用 Hexo 首先是要挑选喜欢的主题，以我个人的感受来讲，Hexo 的主题虽然有两百多个，但是能拿出手的也就不到二十个。其中我最佩服的主题 Next 已经足够优秀，但是风格我并不喜欢，最后决定自己开发。&lt;/p&gt;&lt;p&gt;本文主要记录了我从零开发 Hexo 主题 – &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Stun&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt; 时，遇到的所有坑和经验，&lt;strong&gt;仅供参考&lt;/strong&gt;，有不足的地方欢迎指出。&lt;/p&gt;
     
     </summary>
     
@@ -34,9 +34,9 @@
       <category term="hexo主题开发" scheme="https://liuyib.github.io/categories/hexo-theme/hexo%E4%B8%BB%E9%A2%98%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="hexo" scheme="https://liuyib.github.io/tags/hexo/"/>
-    
       <category term="hexo-theme" scheme="https://liuyib.github.io/tags/hexo-theme/"/>
+    
+      <category term="hexo" scheme="https://liuyib.github.io/tags/hexo/"/>
     
   </entry>
   
