@@ -365,6 +365,74 @@ td {
 .search-close:hover::after {
   transform: rotate(0);
 }
+@-moz-keyframes avatar-shake {
+  0% {
+    transform: scale(1);
+  }
+  10%, 20% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes avatar-shake {
+  0% {
+    transform: scale(1);
+  }
+  10%, 20% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes avatar-shake {
+  0% {
+    transform: scale(1);
+  }
+  10%, 20% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes avatar-shake {
+  0% {
+    transform: scale(1);
+  }
+  10%, 20% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .container {
   display: flex;
   overflow: hidden; /* !!! */
@@ -452,7 +520,7 @@ td {
   font-size: 18px;
   background-color: rgba(45,46,48,0.7);
   height: 80vh;
-  background: url("https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/20190529223722.jpg") no-repeat center center;
+  background: url("https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/cover-img/20190911001213.jpg") no-repeat center center;
   background-size: cover;
 }
 .header-nav {
@@ -704,33 +772,26 @@ td {
   padding: 0.5rem 0;
   text-align: center;
 }
-.sidebar-ov-social-item {
+.sidebar-ov-social__item {
   display: inline-block;
   margin: 0.2rem;
   text-align: center;
+  color: #fff;
+  background-color: #a0daff;
   border-radius: 50%;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #a0daff;
   transition-property: background-color;
   transition-delay: 0s;
   transition-timing-function: ease;
   transition-duration: 0.2s;
 }
-.sidebar-ov-social-item:hover {
+.sidebar-ov-social__item:hover {
+  color: #fff;
   background-color: #4dbaff;
 }
-.sidebar-ov-social-item__a {
-  display: inline-block;
-  width: 100%;
-  color: #fff;
-}
-.sidebar-ov-social-item__a:hover {
-  color: #fff;
-}
-.sidebar-ov-social-item__a--icon {
+.sidebar-ov-social__item--icon {
   font-size: 1.2em;
-  line-height: 1.5rem;
 }
 .sidebar-ov-feed {
   padding: 0.5rem 0;
