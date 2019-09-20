@@ -2,23 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
+    
+    <lastmod>2019-09-20T06:11:40.628Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</loc>
     
     <lastmod>2019-09-18T13:24:54.087Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/05/15/hello-stun/</loc>
-    
-    <lastmod>2019-09-18T13:24:52.965Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
-    
-    <lastmod>2019-09-18T13:24:46.086Z</lastmod>
     
   </url>
   

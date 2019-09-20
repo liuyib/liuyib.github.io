@@ -30,8 +30,6 @@ var precacheUrls = [];
 
   precacheUrls.push('/2019/06/04/front-end-unit-test-and-ci/');
 
-  precacheUrls.push('/2019/05/15/hello-stun/');
-
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
 
