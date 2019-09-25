@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2019-09-25T14:07:40.535Z</updated>
+  <updated>2019-09-25T14:18:23.772Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,20 +21,20 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T12:49:16.000Z</published>
-    <updated>2019-09-25T14:07:40.535Z</updated>
+    <updated>2019-09-25T14:18:23.772Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;前言&quot;&gt;&lt;span
-        
-      
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;span class=&quot;heading-link&quot;&gt;前言&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;一般情况下，当我们点击一个网页链接后，浏览器就会努力发送网络请求，然后将请求到的网页渲染出来。有时，我们经常会在一个网站中不停地点击链接，然后网页不停地跳转。通常，浏览器会对文件资源进行一定的缓存，这样使得同一个网站之间的页面跳转时，能够更快的加载。&lt;/p&gt;&lt;p&gt;虽然浏览的对资源的缓存加快了页面的加载速度，但是页面每一次跳转时，都会整体刷新一次，这一定程度上降低了用户体验。为了解决这一问题，我们可以使用 Pjax 来让页面不跳转进行局部刷新。&lt;/p&gt;
     
     </summary>
     
+      <category term="第三方库" scheme="https://liuyib.github.io/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/"/>
+    
+      <category term="优化用户体验" scheme="https://liuyib.github.io/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E4%BC%98%E5%8C%96%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+    
+    
+      <category term="Pjax" scheme="https://liuyib.github.io/tags/Pjax/"/>
     
   </entry>
   
@@ -43,7 +43,7 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T10:20:24.000Z</published>
-    <updated>2019-09-21T10:27:22.030Z</updated>
+    <updated>2019-09-25T14:12:42.294Z</updated>
     
     <summary type="html">
     
@@ -67,7 +67,7 @@
     <link href="https://liuyib.github.io/2019/07/26/theme-stun-gitter/"/>
     <id>https://liuyib.github.io/2019/07/26/theme-stun-gitter/</id>
     <published>2019-07-26T01:38:55.000Z</published>
-    <updated>2019-09-20T09:42:58.698Z</updated>
+    <updated>2019-09-25T14:12:48.419Z</updated>
     
     <summary type="html">
     
@@ -89,7 +89,7 @@
     <link href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"/>
     <id>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</id>
     <published>2019-06-04T14:54:49.000Z</published>
-    <updated>2019-09-20T09:42:58.694Z</updated>
+    <updated>2019-09-25T14:16:04.938Z</updated>
     
     <summary type="html">
     
@@ -97,8 +97,8 @@
     
     </summary>
     
+      <category term="前端自动化" scheme="https://liuyib.github.io/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     
-      <category term="前端自动化" scheme="https://liuyib.github.io/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     
       <category term="单元测试" scheme="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
     
