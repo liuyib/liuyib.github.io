@@ -24,6 +24,8 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
+  precacheUrls.push('/2019/09/24/use-pjax-to-your-site/');
+
   precacheUrls.push('/2019/08/20/develop-hexo-theme-from-0-to-1/');
 
   precacheUrls.push('/2019/07/26/theme-stun-gitter/');

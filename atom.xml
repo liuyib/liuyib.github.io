@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2019-09-21T10:27:22.030Z</updated>
+  <updated>2019-09-25T14:07:40.535Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Pjax 让你的网站实现局部刷新</title>
+    <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
+    <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
+    <published>2019-09-24T12:49:16.000Z</published>
+    <updated>2019-09-25T14:07:40.535Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>从0到1开发Hexo主题杂谈</title>
