@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2019-11-16T14:51:39.053Z</updated>
+  <updated>2020-01-04T11:52:37.602Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T12:49:16.000Z</published>
-    <updated>2019-11-16T14:51:39.053Z</updated>
+    <updated>2020-01-04T11:52:37.602Z</updated>
     
     <summary type="html">
     
@@ -45,11 +45,11 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T10:20:24.000Z</published>
-    <updated>2019-12-02T05:40:12.892Z</updated>
+    <updated>2020-01-04T11:52:14.108Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;span class=&quot;heading-link&quot;&gt;前言&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github Issue 里写&lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/blog/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github Issue 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;&lt;p&gt;使用 Hexo 首先是要挑选喜欢的主题，以我个人的感受来讲，Hexo 的主题虽然有两百多个，但是能拿出手的也就不到二十个。其中我最佩服的主题 Next 已经足够优秀，但是风格我并不喜欢，最后决定自己开坑。&lt;/p&gt;&lt;p&gt;本文主要记录了我从零开发 Hexo 主题 – &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Stun&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt; 时，遇到的所有坑和经验，&lt;strong&gt;仅供参考&lt;/strong&gt;，有不足的地方欢迎指出。&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;span class=&quot;heading-link&quot;&gt;前言&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github issues 里写&lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/blog/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github issues 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;&lt;p&gt;使用 Hexo 首先是要挑选喜欢的主题，以我个人的感受来讲，Hexo 的主题虽然有两百多个，但是能拿出手的也就不到二十个。其中我最佩服的主题 Next 已经足够优秀，但是风格我并不喜欢，最后决定自己开坑。&lt;/p&gt;&lt;p&gt;本文主要记录了我从零开发 Hexo 主题 – &lt;span class=&quot;external-link&quot;&gt;&lt;a href=&quot;https://github.com/liuyib/hexo-theme-stun&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Stun&lt;/a&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/span&gt; 时，遇到的所有坑和经验，&lt;strong&gt;仅供参考&lt;/strong&gt;，有不足的地方欢迎指出。&lt;/p&gt;
     
     </summary>
     
