@@ -1,1 +1,1 @@
-console.log("hello-stun");
+<html><head></head><body>console.log('hello-stun');</body></html>

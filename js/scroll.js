@@ -1,1 +1,112 @@
-$(document).ready(function(){var o=0,l=!1,s=!0;function e(){var e=$(".header-nav"),a=$(window).scrollTop(),t=a-o;if(0===a)e.removeClass("fixed"),e.removeClass("slider-up"),e.addClass("slider-down"),l=!1;else{l||(e.addClass("fixed"),l=!0);Math.abs(t)>5&&(s&&t>0?(e.removeClass("slider-down"),e.addClass("slider-up"),s=!1):!s&&t<0&&(e.removeClass("slider-up"),e.addClass("slider-down"),s=!0))}o=a}function a(o){$(o).velocity("stop").velocity("scroll",{easing:"ease-in-out",duration:600})}e();var t=CONFIG.back2top&&CONFIG.back2top.enable,n=!1;function i(){var o=$("#back2top");0!==$(window).scrollTop()?n||(o.addClass("show"),o.removeClass("hide"),n=!0):(o.addClass("hide"),o.removeClass("show"),n=!1)}t&&(i(),$("#back2top").on("click",function(){$("body").velocity("stop").velocity("scroll")})),$(window).on("scroll",Stun.utils.throttle(function(){e(),t&&i()},100)),Stun.utils.pjaxReloadScroll=function(){$("#content-wrap").find("h1,h2,h3,h4,h5,h6").on("click",function(){a("#"+$(this).attr("id"))}),$(".toc-link").on("click",function(o){o.preventDefault(),a($(this).attr("href"))})},Stun.utils.pjaxReloadScroll()});
+$(document).ready(function () {
+  // The previous distance from the page to the top.
+  var prevScrollTop = 0;
+  var isNavFix = false;
+  var isNavShow = true;
+
+  function headerNavScroll () {
+    var $headerNav = $('.header-nav');
+    var scrollTop = $(window).scrollTop();
+    var delta = scrollTop - prevScrollTop;
+
+    if (scrollTop === 0) {
+      $headerNav.removeClass('fixed');
+      $headerNav.removeClass('slider-up');
+      $headerNav.addClass('slider-down');
+
+      isNavFix = false;
+    } else {
+      if (!isNavFix) {
+        $headerNav.addClass('fixed');
+
+        isNavFix = true;
+      }
+
+      var MIN_SCROLL_TO_CHANGE_NAV = 5;
+      // Make the state of nav bar not change due to tiny scrolling.
+      if (Math.abs(delta) > MIN_SCROLL_TO_CHANGE_NAV) {
+        if (isNavShow && delta > 0) {
+          $headerNav.removeClass('slider-down');
+          $headerNav.addClass('slider-up');
+
+          isNavShow = false;
+        } else if (!isNavShow && delta < 0) {
+          $headerNav.removeClass('slider-up');
+          $headerNav.addClass('slider-down');
+
+          isNavShow = true;
+        }
+      }
+    }
+
+    prevScrollTop = scrollTop;
+  }
+
+  // Initializaiton
+  headerNavScroll();
+
+  function scrollHeadingToTop (anchor) {
+    $(anchor)
+      .velocity('stop')
+      .velocity('scroll', {
+        easing: 'ease-in-out',
+        duration: 600
+      });
+  }
+
+  var isBack2topEnable = CONFIG.back2top && CONFIG.back2top.enable;
+  var isBack2topShow = false;
+
+  // Back the page to top.
+  function back2top () {
+    var $back2top = $('#back2top');
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop !== 0) {
+      if (!isBack2topShow) {
+        $back2top.addClass('show');
+        $back2top.removeClass('hide');
+        isBack2topShow = true;
+      }
+    } else {
+      $back2top.addClass('hide');
+      $back2top.removeClass('show');
+      isBack2topShow = false;
+    }
+  }
+
+  if (isBack2topEnable) {
+    // Initializaiton
+    back2top();
+
+    $('#back2top').on('click', function () {
+      $('body').velocity('stop').velocity('scroll');
+    });
+  }
+
+  $(window).on('scroll', Stun.utils.throttle(function () {
+    headerNavScroll();
+
+    if (isBack2topEnable) {
+      back2top();
+    }
+  }, 100));
+
+  Stun.utils.pjaxReloadScroll = function () {
+    // Click the heading.
+    $('#content-wrap')
+      .find('h1,h2,h3,h4,h5,h6')
+      .on('click', function () {
+        scrollHeadingToTop('#' + $(this).attr('id'));
+      });
+
+    // Click the post toc.
+    $('.toc-link').on('click', function (e) {
+      e.preventDefault();
+      scrollHeadingToTop($(this).attr('href'));
+    });
+  };
+
+  // Initializaiton
+  Stun.utils.pjaxReloadScroll();
+});

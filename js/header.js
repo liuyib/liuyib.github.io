@@ -1,1 +1,181 @@
-$(document).ready(function(){var e=$(".header-nav-menu"),o=$(".header-nav-menu > .header-nav-menu-item"),n=$(".header-nav-submenu");function t(){o.velocity({height:o.height()})}var i=!1,a=!1;if($(window).on("resize",function(){a&&(o.velocity("stop").velocity({height:o.height()},{complete:function(){n.css({display:"none",opacity:0})}}),a=!1)}),$(document).on("click",function(){e.is(":visible")&&(t(),e.css({display:"none"}),i=!1),c&&(l.removeClass("mode--focus"),c=!1)}),CONFIG.night_mode&&CONFIG.night_mode.enable){var s=!1,c=!1,d="night_mode",l=$(".mode");!function(){var e=!1;try{parseInt(Stun.utils.Cookies().get(d))&&(e=!0)}catch(e){}return e}()?s=!1:(l.addClass("mode--checked"),l.addClass("mode--focus"),$("html").addClass("nightmode"),s=!0),$(".mode").on("click",function(e){e.stopPropagation(),s=!s,c=!c,Stun.utils.Cookies().set(d,s?1:0),l.toggleClass("mode--checked"),l.addClass("mode--focus"),$("html").toggleClass("nightmode")})}$(".header-nav-btn").on("click",function(o){o.stopPropagation(),i=!i,e.velocity("stop").velocity({opacity:i?1:0},{duration:i?200:0,display:i?"block":"none"}),i||t()}),o.on("click",function(e){var n=$(this).find(".header-nav-submenu"),t=o.height(),i=t+n.height()*n.length,s=0;n.length&&(e.stopPropagation(),$(this).height()>t?(a=!1,s=t):(a=!0,s=i),$(this).velocity("stop").velocity({height:s},{duration:300}).siblings().velocity({height:t},{duration:300}))}),o.on("mouseenter",function(){if(!a){var e=$(this).find(".header-nav-submenu");e.length&&e.velocity("stop").velocity({opacity:1},{duration:200,display:"block"})}}),o.on("mouseleave",function(){if(!a){var e=$(this).find(".header-nav-submenu");e.length&&e.css("display","none")}}),Stun.utils.pjaxReloadHeader=function(){CONFIG.header&&CONFIG.header.scrollDownIcon&&$(".header-info-scrolldown").on("click",function(){$("#container").velocity("scroll",{offset:$("#header").height()})})},Stun.utils.pjaxReloadHeader()});
+$(document).ready(function () {
+  var $menu = $('.header-nav-menu');
+  var $menuItem = $('.header-nav-menu > .header-nav-menu-item');
+  var $allSubmenu = $('.header-nav-submenu');
+
+  function closeMenuItem () {
+    $menuItem.velocity({
+      height: $menuItem.height()
+    });
+  }
+
+  function resetMenuStatus () {
+    $menuItem.velocity('stop').velocity({
+      height: $menuItem.height()
+    }, {
+      complete: function () {
+        $allSubmenu.css({ display: 'none', opacity: 0 });
+      }
+    });
+  }
+
+  var isMenuShow = false;
+  var isSubmenuShow = false;
+
+  $(window).on('resize', function () {
+    if (isSubmenuShow) {
+      resetMenuStatus();
+      isSubmenuShow = false;
+    }
+  });
+
+  $(document).on('click', function () {
+    if ($menu.is(':visible')) {
+      closeMenuItem();
+      $menu.css({ display: 'none' });
+      isMenuShow = false;
+    }
+
+    if (isNightModeFocus) {
+      $nightMode.removeClass('mode--focus');
+      isNightModeFocus = false;
+    }
+  });
+
+  function getNightMode () {
+    var nightMode = false;
+
+    try {
+      if (parseInt(Stun.utils.Cookies().get(NIGHT_MODE_COOKIES_KEY))) {
+        nightMode = true;
+      }
+    } catch (err) {}
+
+    return nightMode;
+  }
+
+  if (CONFIG.night_mode && CONFIG.night_mode.enable) {
+    var isNightMode = false;
+    var isNightModeFocus = false;
+    var NIGHT_MODE_COOKIES_KEY = 'night_mode';
+    var $nightMode = $('.mode');
+
+    if (getNightMode()) {
+      $nightMode.addClass('mode--checked');
+      $nightMode.addClass('mode--focus');
+      $('html').addClass('nightmode');
+      isNightMode = true;
+    } else {
+      isNightMode = false;
+    }
+
+    $('.mode').on('click', function (e) {
+      e.stopPropagation();
+
+      isNightMode = !isNightMode;
+      isNightModeFocus = !isNightModeFocus;
+      Stun.utils.Cookies().set(NIGHT_MODE_COOKIES_KEY, isNightMode ? 1 : 0);
+
+      $nightMode.toggleClass('mode--checked');
+      $nightMode.addClass('mode--focus');
+      $('html').toggleClass('nightmode');
+    });
+  }
+
+  $('.header-nav-btn').on('click', function (e) {
+    e.stopPropagation();
+
+    if (!isMenuShow) {
+      isMenuShow = true;
+    } else {
+      isMenuShow = false;
+    }
+
+    $menu.velocity('stop').velocity({
+      opacity: isMenuShow ? 1 : 0
+    }, {
+      duration: isMenuShow ? 200 : 0,
+      display: isMenuShow ? 'block' : 'none'
+    });
+
+    if (!isMenuShow) {
+      closeMenuItem();
+    }
+  });
+
+  $menuItem.on('click', function (e) {
+    var $submenu = $(this).find('.header-nav-submenu');
+    var menuItemHeight = $menuItem.height();
+    var submenuHeight = menuItemHeight + $submenu.height() * $submenu.length;
+    var menuShowHeight = 0;
+
+    if ($submenu.length) {
+      e.stopPropagation();
+
+      if ($(this).height() > menuItemHeight) {
+        isSubmenuShow = false;
+        menuShowHeight = menuItemHeight;
+      } else {
+        isSubmenuShow = true;
+        menuShowHeight = submenuHeight;
+      }
+
+      // 手风琴效果
+      $(this)
+        .velocity('stop')
+        .velocity({
+          height: menuShowHeight
+        }, {
+          duration: 300
+        })
+        .siblings()
+        .velocity({
+          height: menuItemHeight
+        }, {
+          duration: 300
+        });
+    }
+  });
+
+  $menuItem.on('mouseenter', function () {
+    if (isSubmenuShow) {
+      return;
+    }
+
+    var $submenu = $(this).find('.header-nav-submenu');
+
+    if ($submenu.length) {
+      $submenu.velocity('stop').velocity({
+        opacity: 1
+      }, {
+        duration: 200,
+        display: 'block'
+      });
+    }
+  });
+
+  $menuItem.on('mouseleave', function () {
+    if (isSubmenuShow) {
+      return;
+    }
+
+    var $submenu = $(this).find('.header-nav-submenu');
+
+    if ($submenu.length) {
+      $submenu.css('display', 'none');
+    }
+  });
+
+  Stun.utils.pjaxReloadHeader = function () {
+    if (CONFIG.header && CONFIG.header.scrollDownIcon) {
+      $('.header-info-scrolldown').on('click', function () {
+        $('#container').velocity('scroll', {
+          offset: $('#header').height()
+        });
+      });
+    }
+  };
+
+  // Initializaiton
+  Stun.utils.pjaxReloadHeader();
+});
