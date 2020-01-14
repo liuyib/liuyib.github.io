@@ -32,6 +32,7 @@ var CONFIG = {
   post_widget: {"end_text":true},
   night_mode: {"enable":true},
   back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","word_wrap":false},
   reward: true,
   fancybox: false,
   zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
@@ -49,7 +50,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
         </h2>
       
 <p>一般情况下，当我们点击一个网页链接后，浏览器就会努力发送网络请求，然后将请求到的网页渲染出来。有时，我们经常会在一个网站中不停地点击链接，然后网页不停地跳转。通常，浏览器会对文件资源进行一定的缓存，这样使得同一个网站之间的页面跳转时，能够更快的加载。</p>
-<p>虽然浏览器对资源的缓存加快了页面的加载速度，但是页面每一次跳转时，都会整体刷新一次，这一定程度上降低了用户体验。为了解决这一问题，我们可以使用 Pjax 实现网站无刷新加载。</p></div><div class="post-body-more"><a class="post-body-more__a" href="/2019/09/24/use-pjax-to-your-site/">阅读全文 »</a></div></div></article><article class="post"><header class="post-header"><h1 class="post-header-title"><a class="post-header-title__a" href="/2019/08/20/develop-hexo-theme-from-0-to-1/">从0到1开发Hexo主题杂谈</a></h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-08-20</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2020-01-09</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>4k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>26m</span></span></div></header><div class="post-body"><img src="https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/cover-img/20190911002035.jpg"><div class="post-body-excerpt"><h2   id="前言" >
+<p>虽然浏览器对资源的缓存加快了页面的加载速度，但是页面每一次跳转时，都会整体刷新一次，这一定程度上降低了用户体验。为了解决这一问题，我们可以使用 Pjax 实现网站无刷新加载。</p></div><div class="post-body-more"><a class="post-body-more__a" href="/2019/09/24/use-pjax-to-your-site/">阅读全文 »</a></div></div></article><article class="post"><header class="post-header"><h1 class="post-header-title"><a class="post-header-title__a" href="/2019/08/20/develop-hexo-theme-from-0-to-1/">从0到1开发Hexo主题杂谈</a></h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-08-20</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2020-01-14</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>4k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>26m</span></span></div></header><div class="post-body"><img src="https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/cover-img/20190911002035.jpg"><div class="post-body-excerpt"><h2   id="前言" >
           <span class="heading-link">前言</span>
         </h2>
       
@@ -411,7 +412,7 @@ if (true) {
 } else {
   window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=1.5.4"></script><script src="/js/stun-boot.js?v=1.5.4"></script><script src="/js/scroll.js?v=1.5.4"></script><script src="/js/header.js?v=1.5.4"></script><script src="/js/sidebar.js?v=1.5.4"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js?t=1578901416140')
+  navigator.serviceWorker.register('/service-worker.js?t=1579009790857')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
