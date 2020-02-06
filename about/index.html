@@ -30,7 +30,7 @@ var CONFIG = {
   algolia: undefined,
   fontawesome: {"prefix":"fa"},
   sidebar: {"offsetTop":"20px","tocMaxDepth":4},
-  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
   post_widget: {"end_text":true},
   night_mode: {"enable":true},
   back2top: {"enable":true},
@@ -363,7 +363,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Stun.utils.pjaxReloadLocalSearch();
 }, false);</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
-  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
   // 加载进度条的计时器
   var loadingTimer = null;
 
@@ -416,7 +416,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (Stun.utils.pjaxReloadSidebar) {
       Stun.utils.pjaxReloadSidebar();
     }
-    if (true) {
+    if (false) {
       if (Stun.utils.pjaxReloadHeader) {
         Stun.utils.pjaxReloadHeader();
       }
@@ -463,7 +463,7 @@ if (true) {
 } else {
   window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=1.7.0"></script><script src="/js/stun-boot.js?v=1.7.0"></script><script src="/js/scroll.js?v=1.7.0"></script><script src="/js/header.js?v=1.7.0"></script><script src="/js/sidebar.js?v=1.7.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js?t=1580986110602')
+  navigator.serviceWorker.register('/service-worker.js?t=1580986276393')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

@@ -30,7 +30,7 @@ var CONFIG = {
   algolia: undefined,
   fontawesome: {"prefix":"fa"},
   sidebar: {"offsetTop":"20px","tocMaxDepth":4},
-  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
   post_widget: {"end_text":true},
   night_mode: {"enable":true},
   back2top: {"enable":true},
@@ -46,7 +46,7 @@ var CONFIG = {
   prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"复制"}
 };
 
-window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="javascript:;" onclick="return false;"><i class="fa fa-paint-brush"></i>文章</a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="javascript:;" onclick="return false;"><i class="fa fa-flask"></i>实验室</a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener">🦄 Stun</a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/gallery/"><i class="fa fa-picture-o"></i>相册</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/friends/"><i class="fa fa-hand-spock-o"></i>友链</a></div></div><div class="header-nav-search"><i class="fa fa-search"></i><span>搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-header-title">集成 Pjax 实现网站无刷新加载</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-09-24</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2020-01-15</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>2.2k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>14m</span></span><span class="post-header-meta-reading-count"><i class="fa fa-eye"></i><span>阅读次数 </span><span id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>首页</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="javascript:;" onclick="return false;"><i class="fa fa-paint-brush"></i>文章</a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="/tags/"><i class="fa fa-tags"></i>标签</a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="javascript:;" onclick="return false;"><i class="fa fa-flask"></i>实验室</a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__a" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener">🦄 Stun</a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/about/"><i class="fa fa-user"></i>关于</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/gallery/"><i class="fa fa-picture-o"></i>相册</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/friends/"><i class="fa fa-hand-spock-o"></i>友链</a></div></div><div class="header-nav-search"><i class="fa fa-search"></i><span>搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">Liuyib's Blog</div><div class="header-info-subtitle">write code and love life</div></div><div class="header-info-arrow"><i class="fa fa-angle-down header-info-arrow__icon"></i></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-header-title">集成 Pjax 实现网站无刷新加载</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-09-24</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2020-01-15</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>2.2k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>14m</span></span><span class="post-header-meta-reading-count"><i class="fa fa-eye"></i><span>阅读次数 </span><span id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
         <h2   id="前言" >
           <span class="heading-link">前言</span>
         </h2>
@@ -447,7 +447,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Stun.utils.pjaxReloadLocalSearch();
 }, false);</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
-  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
   // 加载进度条的计时器
   var loadingTimer = null;
 
@@ -500,7 +500,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (Stun.utils.pjaxReloadSidebar) {
       Stun.utils.pjaxReloadSidebar();
     }
-    if (true) {
+    if (false) {
       if (Stun.utils.pjaxReloadHeader) {
         Stun.utils.pjaxReloadHeader();
       }
@@ -547,7 +547,7 @@ if (true) {
 } else {
   window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=1.7.0"></script><script src="/js/stun-boot.js?v=1.7.0"></script><script src="/js/scroll.js?v=1.7.0"></script><script src="/js/header.js?v=1.7.0"></script><script src="/js/sidebar.js?v=1.7.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js?t=1580986110602')
+  navigator.serviceWorker.register('/service-worker.js?t=1580986276393')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
