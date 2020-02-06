@@ -1,1 +1,225 @@
-$(document).ready(function(){var t=CONFIG.sidebar&&CONFIG.sidebar.tocMaxDepth||4,e="h1,h2,h3,h4,h5,h6,".slice(0,3*t).slice(0,-1);var s=null,o=null,i=!1;function a(){var t=$(".post-body"),a=$(".sidebar-toc li"),n=t.find(e),r=n.first();if(n.each(function(){this.getBoundingClientRect().top<=5&&(s=this.getAttribute("id"))}),t[0]&&r[0]&&r.offset().top-$(window).scrollTop()>0)i||(a.removeClass("active current"),i=!0);else if(s!==o){var d=$('.sidebar-toc a[href="#'+s+'"]');d[0]&&a.removeClass("active current"),d.parents("li").addClass("active"),d.parent().addClass("current"),o=s}}var n=!1;function r(){var t=$(".sidebar-toc").height();if(!($(".sidebar-toc > div").height()<=t)){var e=$(".sidebar-toc"),s=$(".sidebar-toc .current a");if(s[0]&&e[0]){var o=s.offset().top-e.offset().top;n=o>t||o<0}n&&s.velocity("stop").velocity("scroll",{container:e,offset:-t/2,duration:500,easing:"easeOutQuart"})}}var d=0;function c(){var t=$(".sidebar-inner");document.getElementById("content-wrap").getBoundingClientRect().top<d?t.addClass("sticky"):t.removeClass("sticky")}function l(){if(0!==$("#is-post").length){var t=$(".content"),e=t.offset().top,s=0,o=!1,i=0;CONFIG.post_widget&&CONFIG.post_widget.end_text&&(o=!0),s=o?$(".post-end").offset().top-e+$(".post-end").outerHeight():$(".post-footer").offset().top-e;var a=$(window).height(),n=0;0!==t.length&&(n=parseInt(-1*t[0].getBoundingClientRect().top)+a);var r=Number($(".sidebar-reading-info-num").text());s=parseInt(Math.abs(s)),0===(i=(i=parseInt(n/s*100))>100?100:i<0?0:i)&&0===r||100===i&&100===r||($(".sidebar-reading-info-num").text(i),$(".sidebar-reading-line").css("transform","translateX("+(i-100)+"%)"))}}CONFIG.sidebar&&CONFIG.sidebar.offsetTop&&(d=parseInt(CONFIG.sidebar.offsetTop)),a(),c(),r(),l(),$(window).on("scroll",function(){c()}),$(window).on("scroll",Stun.utils.throttle(function(){a(),r(),l()},150)),Stun.utils.pjaxReloadSidebar=function(){var t=$(".sidebar-nav-toc"),s=$(".sidebar-nav-ov"),o=$(".sidebar-toc"),i=$(".sidebar-ov");t.on("click",function(){$(this).hasClass("current")||(t.addClass("current"),s.removeClass("current"),o.css("display","block"),o.velocity("stop").velocity("fadeIn"),i.css("display","none"),i.velocity("stop").velocity("fadeOut"))}),s.on("click",function(){$(this).hasClass("current")||(s.addClass("current"),t.removeClass("current"),o.css("display","none"),o.velocity("stop").velocity("fadeOut"),i.css("display","block"),i.velocity("stop").velocity("fadeIn"))}),$(".post-body").find(e)[0]||($(".sidebar-nav").addClass("hide"),$(".sidebar-toc").addClass("hide"),$(".sidebar-ov").removeClass("hide"))},Stun.utils.pjaxReloadSidebar()});
+$(document).ready(function () {
+  var tocDepth = (CONFIG.sidebar && CONFIG.sidebar.tocMaxDepth) || 4;
+  // Optimize selector by theme config.
+  var HEADING_SELECTOR = 'h1,h2,h3,h4,h5,h6,'
+    .slice(0, tocDepth * 3)
+    .slice(0, -1);
+
+  function initTocDisplay () {
+    if ($('.post-body').find(HEADING_SELECTOR)[0]) {
+      return;
+    }
+    $('.sidebar-nav').addClass('hide');
+    $('.sidebar-toc').addClass('hide');
+    $('.sidebar-ov').removeClass('hide');
+  }
+
+  // The heading that reached the top currently.
+  var currHeading = null;
+  // The heading that reached the top last time.
+  var lastHeading = null;
+  var isRemoveTocClass = false;
+
+  // Automatically expand items in the article directory
+  //   based on the scrolling of heading in the article.
+  function autoSpreadToc () {
+    var $postBody = $('.post-body');
+    var $allTocItem = $('.sidebar-toc li');
+    var $headings = $postBody.find(HEADING_SELECTOR);
+    var $firsetChild = $headings.first();
+
+    $headings.each(function () {
+      var headingTop = this.getBoundingClientRect().top;
+      // The minimum distance from the top of the browser
+      //   when heading is marked as active in toc.
+      var MIN_HEIGHT_TO_TOP = 5;
+
+      if (headingTop <= MIN_HEIGHT_TO_TOP) {
+        currHeading = this.getAttribute('id');
+      }
+    });
+
+    // All heading are not to the top.
+    if (
+      $postBody[0] &&
+      $firsetChild[0] &&
+      $firsetChild.offset().top - $(window).scrollTop() > 0
+    ) {
+      if (!isRemoveTocClass) {
+        $allTocItem.removeClass('active current');
+        isRemoveTocClass = true;
+      }
+      return;
+    }
+
+    if (currHeading !== lastHeading) {
+      var $targetLink = $('.sidebar-toc a[href="#' + currHeading + '"]');
+      // If the relevant "<a>" is not found, remain the state of the toc,
+      //   either, remove styles for all active states.
+      if ($targetLink[0]) {
+        $allTocItem.removeClass('active current');
+      }
+      $targetLink.parents('li').addClass('active');
+      $targetLink.parent().addClass('current');
+      lastHeading = currHeading;
+    }
+  }
+
+  // Whether toc needs scrolling.
+  var isTocScroll = false;
+  // Scroll the post toc to the middle.
+  function scrollTocToMiddle () {
+    var $tocWrapHeight = $('.sidebar-toc').height();
+    var $tocHeight = $('.sidebar-toc > div').height();
+
+    if ($tocHeight <= $tocWrapHeight) {
+      return;
+    }
+
+    var $tocWrap = $('.sidebar-toc');
+    var $currTocItem = $('.sidebar-toc .current a');
+
+    if ($currTocItem[0] && $tocWrap[0]) {
+      var tocTop = $currTocItem.offset().top - $tocWrap.offset().top;
+      isTocScroll = tocTop > $tocWrapHeight || tocTop < 0;
+    }
+
+    if (isTocScroll) {
+      $currTocItem.velocity('stop').velocity('scroll', {
+        container: $tocWrap,
+        offset: -$tocWrapHeight / 2,
+        duration: 500,
+        easing: 'easeOutQuart'
+      });
+    }
+  }
+
+  // Distance from sidebar to top.
+  var sidebarToTop = 0;
+  if (CONFIG.sidebar && CONFIG.sidebar.offsetTop) {
+    sidebarToTop = parseInt(CONFIG.sidebar.offsetTop);
+  }
+
+  // Sticky the sidebar when it arrived the top.
+  function sidebarSticky () {
+    var $sidebar = $('.sidebar-inner');
+    var targetY = document
+      .getElementById('content-wrap')
+      .getBoundingClientRect().top;
+
+    if (targetY < sidebarToTop) {
+      $sidebar.addClass('sticky');
+    } else {
+      $sidebar.removeClass('sticky');
+    }
+  }
+
+  // Update the reading progress lines of post.
+  function readProgress () {
+    // Not on post page.
+    if ($('#is-post').length === 0) {
+      return;
+    }
+
+    var $post = $('.content');
+    var postTop = $post.offset().top;
+    var postEndTop = 0;
+    var postEndHeight = 0;
+    var postReadingHeight = 0;
+    var isEnablePostEnd = false;
+    var percent = 0;
+
+    if (CONFIG.post_widget && CONFIG.post_widget.end_text) {
+      isEnablePostEnd = true;
+    }
+    if (isEnablePostEnd) {
+      postEndTop = $('.post-end').offset().top;
+      postEndHeight = $('.post-end').outerHeight();
+      postReadingHeight = postEndTop - postTop + postEndHeight;
+    } else {
+      postEndTop = $('.post-footer').offset().top;
+      postReadingHeight = postEndTop - postTop;
+    }
+
+    var windowHeight = $(window).height();
+    var postScrollTop = 0;
+
+    if ($post.length !== 0) {
+      postScrollTop =
+        parseInt($post[0].getBoundingClientRect().top * -1) + windowHeight;
+    }
+
+    var percentNum = Number($('.sidebar-reading-info-num').text());
+    postReadingHeight = parseInt(Math.abs(postReadingHeight));
+    percent = parseInt((postScrollTop / postReadingHeight) * 100);
+    percent = percent > 100 ? 100 : percent < 0 ? 0 : percent;
+
+    // Has reached the maximum or minimum
+    if (
+      (percent === 0 && percentNum === 0) ||
+      (percent === 100 && percentNum === 100)
+    ) {
+      return;
+    }
+    $('.sidebar-reading-info-num').text(percent);
+    $('.sidebar-reading-line').css(
+      'transform',
+      'translateX(' + (percent - 100) + '%)'
+    );
+  }
+
+  // Initial run
+  autoSpreadToc();
+  sidebarSticky();
+  scrollTocToMiddle();
+  readProgress();
+
+  $(window).on('scroll', function () {
+    sidebarSticky();
+  });
+
+  $(window).on(
+    'scroll',
+    Stun.utils.throttle(function () {
+      autoSpreadToc();
+      scrollTocToMiddle();
+      readProgress();
+    }, 150)
+  );
+
+  Stun.utils.pjaxReloadSidebar = function () {
+    var $navToc = $('.sidebar-nav-toc');
+    var $navOv = $('.sidebar-nav-ov');
+    var $tocWrap = $('.sidebar-toc');
+    var $overview = $('.sidebar-ov');
+
+    $navToc.on('click', function (e) {
+      e.stopPropagation();
+      if ($(this).hasClass('current')) {
+        return;
+      }
+      $navToc.addClass('current');
+      $navOv.removeClass('current');
+      $tocWrap.css('display', 'block');
+      $tocWrap.velocity('stop').velocity('fadeIn');
+      $overview.css('display', 'none');
+      $overview.velocity('stop').velocity('fadeOut');
+    });
+    $navOv.on('click', function (e) {
+      e.stopPropagation();
+      if ($(this).hasClass('current')) {
+        return;
+      }
+      $navOv.addClass('current');
+      $navToc.removeClass('current');
+      $tocWrap.css('display', 'none');
+      $tocWrap.velocity('stop').velocity('fadeOut');
+      $overview.css('display', 'block');
+      $overview.velocity('stop').velocity('fadeIn');
+    });
+    initTocDisplay();
+  };
+
+  // Initialization
+  Stun.utils.pjaxReloadSidebar();
+});

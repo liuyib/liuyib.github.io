@@ -1,1 +1,607 @@
-Stun.utils=Stun.$u={debounce:function(e,t,n){var o;return function(){var i=this,a=arguments;if(o&&clearTimeout(o),n){var r=!o;o=setTimeout(function(){o=null},t),r&&e.apply(i,a)}else o=setTimeout(function(){e.apply(i,a)},t)}},throttle:function(e,t,n){var o,i,a,r=0;n||(n={});var c=function(){r=!1===n.leading?0:(new Date).getTime(),o=null,e.apply(i,a),o||(i=a=null)};return function(){var s=(new Date).getTime();r||!1!==n.leading||(r=s);var l=t-(s-r);i=this,a=arguments,l<=0||l>t?(o&&(clearTimeout(o),o=null),r=s,e.apply(i,a),o||(i=a=null)):o||!1===n.trailing||(o=setTimeout(c,l))}},hasMobileUA:function(){var e=window.navigator.userAgent;return/iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g.test(e)},isTablet:function(){return window.screen.width>767&&window.screen.width<992&&this.hasMobileUA()},isMobile:function(){return window.screen.width<767&&this.hasMobileUA()},isDesktop:function(){return!this.isTablet()&&!this.isMobile()},Cookies:function(){function e(){for(var e=0,t={};e<arguments.length;e++){var n=arguments[e];for(var o in n)t[o]=n[o]}return t}return function t(n){function o(t,i,a){var r;if("undefined"!=typeof document){if(arguments.length>1){if("number"==typeof(a=e({path:"/"},o.defaults,a)).expires){var c=new Date;c.setMilliseconds(c.getMilliseconds()+864e5*a.expires),a.expires=c}a.expires=a.expires?a.expires.toUTCString():"";try{r=JSON.stringify(i),/^[{[]/.test(r)&&(i=r)}catch(e){}i=n.write?n.write(i,t):encodeURIComponent(String(i)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),t=(t=(t=encodeURIComponent(String(t))).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent)).replace(/[()]/g,escape);var s="";for(var l in a)a[l]&&(s+="; "+l,!0!==a[l]&&(s+="="+a[l]));return document.cookie=t+"="+i+s}t||(r={});for(var d=document.cookie?document.cookie.split("; "):[],u=/(%[0-9A-Z]{2})+/g,p=0;p<d.length;p++){var f=d[p].split("="),h=f.slice(1).join("=");'"'===h.charAt(0)&&(h=h.slice(1,-1));try{var m=f[0].replace(u,decodeURIComponent);if(h=n.read?n.read(h,m):n(h,m)||h.replace(u,decodeURIComponent),this.json)try{h=JSON.parse(h)}catch(e){}if(t===m){r=h;break}t||(r[m]=h)}catch(e){}}return r}}return o.set=o,o.get=function(e){return o.call(o,e)},o.getJSON=function(){return o.apply({json:!0},[].slice.call(arguments))},o.defaults={},o.remove=function(t,n){o(t,"",e(n,{expires:-1}))},o.withConverter=t,o}(function(){})},showThemeInConsole:function(){console.log("%c%s%c%s%c%s","background-color: #49b1f5; color: #fff; padding: 8px; font-size: 14px;","主题不错？⭐star 支持一下 ->","background-color: #ffbca2; padding: 8px; font-size: 14px;","https://github.com/liuyib/hexo-theme-stun","background-color: #eaf8ff;","\n\n      ___          ___            ___            ___      \n     /\\  \\        /\\  \\          /\\__\\          /\\__\\     \n    /::\\  \\       \\:\\  \\        /:/  /         /::|  |    \n   /:/\\ \\  \\       \\:\\  \\      /:/  /         /:|:|  |    \n  _\\:\\ \\ \\  \\      /::\\  \\    /:/  /  ___    /:/|:|  |__  \n /\\ \\:\\ \\ \\__\\    /:/\\:\\__\\  /:/__/  /\\__\\  /:/ |:| /\\__\\ \n \\:\\ \\:\\ \\/__/   /:/  \\/__/  \\:\\  \\ /:/  /  \\/__|:|/:/  / \n  \\:\\ \\:\\__\\    /:/  /        \\:\\  /:/  /       |:/:/  /  \n   \\:\\/:/  /    \\/__/          \\:\\/:/  /        |::/  /   \n    \\::/  /                     \\::/  /         /:/  /    \n     \\/__/                       \\/__/          \\/__/     \n                                                          \n")},codeToKeyCode:function(e){return{ArrowLeft:37,ArrowRight:39,Escape:27,Enter:13}[e]},popAlert:function(e,t,n){0!==$(".stun-message").length&&$(".stun-message").remove();var o=CONFIG.fontawesome&&CONFIG.fontawesome.prefix||"fa",i=$('<div class="stun-message">'+`<div class="stun-alert stun-alert-${e}">`+`<i class="stun-alert-icon ${o} fa-${{success:"check-circle",info:"exclamation-circle",warning:"exclamation-circle",error:"times-circle"}[e]}"></i>`+`<span class="stun-alert-description">${t}</span>`+"</div></div>");$("body").append(i),$(document).ready(function(){$(".stun-alert").velocity("stop").velocity("transition.slideDownBigIn",{duration:300}).velocity("reverse",{delay:1e3*n||5e3,duration:260,complete:function(){$(".stun-alert").css("display","none")}})})},copyText:function(e){try{var t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n);var o=t.toString(),i=document.createElement("input");if(i.style.display="none",i.setAttribute("readonly","readonly"),i.setAttribute("value",o),document.body.appendChild(i),i.setSelectionRange(0,-1),document.execCommand("copy"))return document.execCommand("copy"),document.body.removeChild(i),!0;document.body.removeChild(i)}catch(e){return!1}},wrapImageWithFancyBox:function(){$(".content img").not(":hidden").each(function(){var e=$(this),t=e.attr("title")||e.attr("alt"),n=e.parent("a"),o=["data-src","data-original","src"],i="";if(!n[0]){for(var a=0;a<o.length;a++)if(e.attr(o[a])){i=e.attr(o[a]);break}n=e.wrap(`<a class="fancybox" href="${i}" itemscope itemtype="http://schema.org/ImageObject" itemprop="url"></a>`).parent("a"),e.is(".gallery img")?n.attr("data-fancybox","gallery"):n.attr("data-fancybox","default")}t&&n.attr("title",t).attr("data-caption",t)}),$().fancybox({selector:"[data-fancybox]",loop:!0,transitionEffect:"slide",hash:!1,buttons:["share","slideShow","fullScreen","download","thumbs","close"]})},showImageToWaterfall:function(){var e=CONFIG.gallery_waterfall,t=parseInt(e.col_width),n=parseInt(e.gap_x);this.waitAllImageLoad(".gallery__img",function(){$(".gallery").masonry({itemSelector:".gallery__img",columnWidth:t,percentPosition:!0,gutter:n,transitionDuration:0})})},lazyLoadImage:function(){$("img.lazyload").lazyload()},addIconToExternalLink:function(e){if($(e)[0]){var t=CONFIG.fontawesome&&CONFIG.fontawesome.prefix||"fa",n=CONFIG.external_link.icon.name,o=$('<span class="external-link"></span>'),i=$(`<i class="${t} fa-${n}"></i>`);$(e).find('a[target="_blank"]').wrap(o).parent(".external-link").append(i)}},registerHotkeyToSwitchPost:function(){var e=this;$(document).on("keydown",function(t){var n=t.keyCode===e.codeToKeyCode("ArrowLeft"),o=t.keyCode===e.codeToKeyCode("ArrowRight");if(t.ctrlKey&&n){var i=$(".paginator-post-prev").find("a")[0];i&&i.click()}else if(t.ctrlKey&&o){var a=$(".paginator-post-next").find("a")[0];a&&a.click()}})},registerShowReward:function(){$(".reward-button").on("click",function(){var e=$(".reward-qr");e.is(":visible")?e.css("display","none"):e.velocity("stop").velocity("transition.slideDownIn",{duration:300})})},registerClickToZoomImage:function(){$("#content-wrap img").not(":hidden").each(function(){"none"!==$(this).attr("data-zoom")&&$(this).addClass("zoom-image")});var e=$('<div class="zoom-image-mask"></div>'),t=$("<img>"),n=!1;function o(){t.velocity("reverse"),e.velocity("reverse",{complete:function(){$(".zoom-image.show").remove(),$(".zoom-image-mask").remove(),$(".zoom-image").removeClass("hide")}})}$(window).on("scroll",function(){n&&(n=!1,setTimeout(o,200))}),$(document).on("click",function(){o()}),$(".zoom-image").on("click",function(o){o.stopPropagation(),n=!0;var i=this.getBoundingClientRect(),a=$(this).width(),r=$(this).height(),c=$(this).outerWidth(),s=$(this).outerHeight(),l=$(window).width(),d=$(window).height(),u=l/a,p=d/r,f=(u<p?u:p)||1,h=l/2-(i.x+c/2),m=d/2-(i.y+s/2);t.attr("class",this.className),t.attr("src",this.src),t.addClass("show"),t.css({left:$(this).offset().left+(c-a)/2,top:$(this).offset().top+(s-r)/2,width:a,height:r}),$(this).addClass("hide"),$("body").append(e).append(t),e.velocity({opacity:1}),t.velocity({translateX:h,translateY:m,scale:f},{duration:300,easing:[.2,0,.2,1]})})},addCodeHeader:function(e){$("figure.highlight").each(function(){if(!$(this).find("figcaption")[0]){var t="";if(e)"carbon"===e&&(t+='\n            <div class="custom-carbon">\n              <div class="custom-carbon-dot custom-carbon-dot--red"></div>\n              <div class="custom-carbon-dot custom-carbon-dot--yellow"></div>\n              <div class="custom-carbon-dot custom-carbon-dot--green"></div>\n            </div>\n          ');else{t+=`<div class="custom-lang">${$(this).attr("class").split(/\s/).filter(function(e){return"highlight"!==e})}</div>`}$(`<figcaption class="custom">${t}</figcaption>`).insertBefore($(this).children().first())}})},addCopyButton:function(e){var t=".post-copyright,",n=CONFIG.fontawesome&&CONFIG.fontawesome.prefix||"fa",o=$(`<div class="copy-button" data-popover="${CONFIG.prompt.copy_button}" data-popover-pos="up">`+`<i class="${n} fa-clipboard"></i>`+"</div>");t+="simple"===e||"carbon"===e?'.highlight figcaption:not(".custom")':".highlight figcaption",$(t).append(o)},registerCopyEvent:function(){$(".copy-button").on("click",function(){var e=null,t=$(this).parents("figure.highlight").find("td.code")[0];e=t||$(this).parent()[0],Stun.utils.copyText(e)?Stun.utils.popAlert("success",CONFIG.prompt.copy_success):Stun.utils.popAlert("error",CONFIG.prompt.copy_error)})},waitAllImageLoad:function(e,t){var n=[];$(e).each(function(){var e=$.Deferred();$(this).bind("load",function(){e.resolve()}),this.complete&&setTimeout(function(){e.resolve()},500),n.push(e)}),$.when.apply(null,n).then(t)}};
+Stun.utils = Stun.$u = {
+  /**
+   * Debounce
+   * @param {Object} func Callback function
+   * @param {Number} wait Waiting time
+   * @param {Boolean} immediate Run immediately
+   */
+  debounce: function (func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this;
+      var args = arguments;
+
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        var callNow = !timeout;
+        timeout = setTimeout(function () {
+          timeout = null;
+        }, wait);
+        if (callNow) func.apply(context, args);
+      } else {
+        timeout = setTimeout(function () {
+          func.apply(context, args);
+        }, wait);
+      }
+    };
+  },
+  /**
+   * Throttle
+   * @param {Object} func Callback function
+   * @param {Number} wait Waiting time
+   * @param {Object} options leading: Boolean, trailing: Boolean
+   */
+  throttle: function (func, wait, options) {
+    var timeout, context, args;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function () {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    var throttled = function () {
+      var now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+    };
+    return throttled;
+  },
+  hasMobileUA: function () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+    return pa.test(ua);
+  },
+  isTablet: function () {
+    return (
+      window.screen.width > 767 &&
+      window.screen.width < 992 &&
+      this.hasMobileUA()
+    );
+  },
+  isMobile: function () {
+    return window.screen.width < 767 && this.hasMobileUA();
+  },
+  isDesktop: function () {
+    return !this.isTablet() && !this.isMobile();
+  },
+  Cookies: function () {
+    function extend () {
+      var i = 0;
+      var result = {};
+      for (; i < arguments.length; i++) {
+        var attributes = arguments[i];
+        for (var key in attributes) {
+          result[key] = attributes[key];
+        }
+      }
+      return result;
+    }
+
+    function init (converter) {
+      function api (key, value, attributes) {
+        var result;
+        if (typeof document === 'undefined') {
+          return;
+        }
+        // Write
+        if (arguments.length > 1) {
+          attributes = extend({ path: '/' }, api.defaults, attributes);
+          if (typeof attributes.expires === 'number') {
+            var expires = new Date();
+            expires.setMilliseconds(
+              expires.getMilliseconds() + attributes.expires * 864e5
+            );
+            attributes.expires = expires;
+          }
+          // We're using "expires" because "max-age" is not supported by IE
+          attributes.expires = attributes.expires
+            ? attributes.expires.toUTCString()
+            : '';
+          try {
+            result = JSON.stringify(value);
+            if (/^[{[]/.test(result)) {
+              value = result;
+            }
+          } catch (e) {}
+          if (!converter.write) {
+            value = encodeURIComponent(String(value)).replace(
+              /%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,
+              decodeURIComponent
+            );
+          } else {
+            value = converter.write(value, key);
+          }
+          key = encodeURIComponent(String(key));
+          key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+          key = key.replace(/[()]/g, escape);
+
+          var stringifiedAttributes = '';
+          for (var attributeName in attributes) {
+            if (!attributes[attributeName]) {
+              continue;
+            }
+            stringifiedAttributes += '; ' + attributeName;
+            if (attributes[attributeName] === true) {
+              continue;
+            }
+            stringifiedAttributes += '=' + attributes[attributeName];
+          }
+          return (document.cookie = key + '=' + value + stringifiedAttributes);
+        }
+        // Read
+        if (!key) {
+          result = {};
+        }
+        // To prevent the for loop in the first place assign an empty array
+        // in case there are no cookies at all. Also prevents odd result when
+        // calling "get()"
+        var cookies = document.cookie ? document.cookie.split('; ') : [];
+        var rdecode = /(%[0-9A-Z]{2})+/g;
+        var i = 0;
+
+        for (; i < cookies.length; i++) {
+          var parts = cookies[i].split('=');
+          var cookie = parts.slice(1).join('=');
+
+          if (cookie.charAt(0) === '"') {
+            cookie = cookie.slice(1, -1);
+          }
+          try {
+            var name = parts[0].replace(rdecode, decodeURIComponent);
+            cookie = converter.read
+              ? converter.read(cookie, name)
+              : converter(cookie, name) ||
+                cookie.replace(rdecode, decodeURIComponent);
+            if (this.json) {
+              try {
+                cookie = JSON.parse(cookie);
+              } catch (e) {}
+            }
+            if (key === name) {
+              result = cookie;
+              break;
+            }
+            if (!key) {
+              result[name] = cookie;
+            }
+          } catch (e) {}
+        }
+        return result;
+      }
+      api.set = api;
+      api.get = function (key) {
+        return api.call(api, key);
+      };
+      api.getJSON = function () {
+        return api.apply({ json: true }, [].slice.call(arguments));
+      };
+      api.defaults = {};
+      api.remove = function (key, attributes) {
+        api(key, '', extend(attributes, { expires: -1 }));
+      };
+      api.withConverter = init;
+      return api;
+    }
+    return init(function () {});
+  },
+  showThemeInConsole: function () {
+    var stunInfo = '主题不错？⭐star 支持一下 ->';
+    var stunURL = 'https://github.com/liuyib/hexo-theme-stun';
+    var stunNameStr =
+      '\n\n      ___          ___            ___            ___      \n     /\\  \\        /\\  \\          /\\__\\          /\\__\\     \n    /::\\  \\       \\:\\  \\        /:/  /         /::|  |    \n   /:/\\ \\  \\       \\:\\  \\      /:/  /         /:|:|  |    \n  _\\:\\ \\ \\  \\      /::\\  \\    /:/  /  ___    /:/|:|  |__  \n /\\ \\:\\ \\ \\__\\    /:/\\:\\__\\  /:/__/  /\\__\\  /:/ |:| /\\__\\ \n \\:\\ \\:\\ \\/__/   /:/  \\/__/  \\:\\  \\ /:/  /  \\/__|:|/:/  / \n  \\:\\ \\:\\__\\    /:/  /        \\:\\  /:/  /       |:/:/  /  \n   \\:\\/:/  /    \\/__/          \\:\\/:/  /        |::/  /   \n    \\::/  /                     \\::/  /         /:/  /    \n     \\/__/                       \\/__/          \\/__/     \n                                                          \n';
+    var stunInfoStyle =
+      'background-color: #49b1f5; color: #fff; padding: 8px; font-size: 14px;';
+    var stunURLStyle =
+      'background-color: #ffbca2; padding: 8px; font-size: 14px;';
+    var stunNameStyle = 'background-color: #eaf8ff;';
+
+    console.log(
+      '%c%s%c%s%c%s',
+      stunInfoStyle,
+      stunInfo,
+      stunURLStyle,
+      stunURL,
+      stunNameStyle,
+      stunNameStr
+    );
+  },
+  /**
+   * Change the event code to keyCode.
+   * @param {String} code Event code
+   */
+  codeToKeyCode: function (code) {
+    var codes = {
+      ArrowLeft: 37,
+      ArrowRight: 39,
+      Escape: 27,
+      Enter: 13
+    };
+    return codes[code];
+  },
+  /**
+   * "Alert" component
+   * @param {String} status The Status of message. Values: success / info / warning / error.
+   * @param {String} text The text to show.
+   * @param {Number} delay Message stay time (unit is 's', default 5s).
+   */
+  popAlert: function (status, text, delay) {
+    var icon = {
+      success: 'check-circle',
+      info: 'exclamation-circle',
+      warning: 'exclamation-circle',
+      error: 'times-circle'
+    };
+    if ($('.stun-message').length !== 0) {
+      $('.stun-message').remove();
+    }
+
+    var faPrefix = (CONFIG.fontawesome && CONFIG.fontawesome.prefix) || 'fa';
+    var $alert = $(
+      '<div class="stun-message">' +
+        `<div class="stun-alert stun-alert-${status}">` +
+        `<i class="stun-alert-icon ${faPrefix} fa-${icon[status]}"></i>` +
+        `<span class="stun-alert-description">${text}</span>` +
+        '</div>' +
+        '</div>'
+    );
+
+    $('body').append($alert);
+    $(document).ready(function () {
+      $('.stun-alert')
+        .velocity('stop')
+        .velocity('transition.slideDownBigIn', {
+          duration: 300
+        })
+        .velocity('reverse', {
+          delay: delay * 1000 || 5000,
+          duration: 260,
+          complete: function () {
+            $('.stun-alert').css('display', 'none');
+          }
+        });
+    });
+  },
+  /**
+   * Copy any text.
+   * @param {HTMLElement} container Container of text.
+   */
+  copyText: function (container) {
+    try {
+      var selection = window.getSelection();
+      var range = document.createRange();
+      // Select text by the content of node.
+      range.selectNodeContents(container);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      var text = selection.toString();
+      var input = document.createElement('input');
+      // Create a temporary input to make the
+      // execCommand command take effect.
+      input.style.display = 'none';
+      input.setAttribute('readonly', 'readonly');
+      input.setAttribute('value', text);
+      document.body.appendChild(input);
+      input.setSelectionRange(0, -1);
+
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        return true;
+      }
+      document.body.removeChild(input);
+    } catch (e) {
+      return false;
+    }
+  },
+  // Wrap images with fancybox support.
+  wrapImageWithFancyBox: function () {
+    $('.content img')
+      .not(':hidden')
+      .each(function () {
+        var $img = $(this);
+        var imgTitle = $img.attr('title') || $img.attr('alt');
+        var $imgWrap = $img.parent('a');
+        var imgSource = ['data-src', 'data-original', 'src'];
+        var imgSrc = '';
+
+        if (!$imgWrap[0]) {
+          for (var i = 0; i < imgSource.length; i++) {
+            if ($img.attr(imgSource[i])) {
+              imgSrc = $img.attr(imgSource[i]);
+              break;
+            }
+          }
+          $imgWrap = $img
+            .wrap(
+              `<a class="fancybox" href="${imgSrc}" itemscope itemtype="http://schema.org/ImageObject" itemprop="url"></a>`
+            )
+            .parent('a');
+          if ($img.is('.gallery img')) {
+            $imgWrap.attr('data-fancybox', 'gallery');
+          } else {
+            $imgWrap.attr('data-fancybox', 'default');
+          }
+        }
+        if (imgTitle) {
+          $imgWrap.attr('title', imgTitle).attr('data-caption', imgTitle);
+        }
+      });
+
+    $().fancybox({
+      selector: '[data-fancybox]',
+      loop: true,
+      transitionEffect: 'slide',
+      hash: false,
+      buttons: [
+        'share',
+        'slideShow',
+        'fullScreen',
+        'download',
+        'thumbs',
+        'close'
+      ]
+    });
+  },
+  // Display the image in the gallery as a waterfall.
+  showImageToWaterfall: function () {
+    var gConfig = CONFIG.gallery_waterfall;
+    var colWidth = parseInt(gConfig.col_width);
+    var colGapX = parseInt(gConfig.gap_x);
+    var GALLERY_IMG_SELECTOR = '.gallery__img';
+
+    this.waitAllImageLoad(GALLERY_IMG_SELECTOR, function () {
+      $('.gallery').masonry({
+        itemSelector: GALLERY_IMG_SELECTOR,
+        columnWidth: colWidth,
+        percentPosition: true,
+        gutter: colGapX,
+        transitionDuration: 0
+      });
+    });
+  },
+  // Lazy load the images of post.
+  lazyLoadImage: function () {
+    $('img.lazyload').lazyload();
+  },
+  // Add a mark icon to the link with `target="_blank"` attribute.
+  addIconToExternalLink: function (container) {
+    if (!$(container)[0]) {
+      return;
+    }
+
+    var faPrefix = (CONFIG.fontawesome && CONFIG.fontawesome.prefix) || 'fa';
+    var extIconName = CONFIG.external_link.icon.name;
+    var $wrapper = $('<span class="external-link"></span>');
+    var $icon = $(`<i class="${faPrefix} fa-${extIconName}"></i>`);
+
+    $(container)
+      .find('a[target="_blank"]')
+      .wrap($wrapper)
+      .parent('.external-link')
+      .append($icon);
+  },
+  // Switch to the prev / next post by shortcuts.
+  registerHotkeyToSwitchPost: function () {
+    var _this = this;
+    $(document).on('keydown', function (e) {
+      var isPrev = e.keyCode === _this.codeToKeyCode('ArrowLeft');
+      var isNext = e.keyCode === _this.codeToKeyCode('ArrowRight');
+
+      if (e.ctrlKey && isPrev) {
+        var prev = $('.paginator-post-prev').find('a')[0];
+        prev && prev.click();
+      } else if (e.ctrlKey && isNext) {
+        var next = $('.paginator-post-next').find('a')[0];
+        next && next.click();
+      }
+    });
+  },
+  // Show / Hide the reward QR.
+  registerShowReward: function () {
+    $('.reward-button').on('click', function () {
+      var $container = $('.reward-qr');
+      if ($container.is(':visible')) {
+        $container.css('display', 'none');
+      } else {
+        $container.velocity('stop').velocity('transition.slideDownIn', {
+          duration: 300
+        });
+      }
+    });
+  },
+  // Click to zoom in image, without fancybox.
+  registerClickToZoomImage: function () {
+    $('#content-wrap img')
+      .not(':hidden')
+      .each(function () {
+        if ($(this).attr('data-zoom') === 'none') {
+          return;
+        }
+        $(this).addClass('zoom-image');
+      });
+
+    var $newImgMask = $('<div class="zoom-image-mask"></div>');
+    var $newImg = $('<img>');
+    var isZoom = false;
+
+    $(window).on('scroll', function () {
+      if (isZoom) {
+        isZoom = false;
+        setTimeout(closeZoom, 200);
+      }
+    });
+
+    $(document).on('click', function () {
+      closeZoom();
+    });
+
+    $('.zoom-image').on('click', function (e) {
+      e.stopPropagation();
+      isZoom = true;
+
+      var imgRect = this.getBoundingClientRect();
+      var imgW = $(this).width();
+      var imgH = $(this).height();
+      var imgOuterW = $(this).outerWidth();
+      var imgOuterH = $(this).outerHeight();
+      var winW = $(window).width();
+      var winH = $(window).height();
+      var scaleX = winW / imgW;
+      var scaleY = winH / imgH;
+      var scale = (scaleX < scaleY ? scaleX : scaleY) || 1;
+      var translateX = winW / 2 - (imgRect.x + imgOuterW / 2);
+      var translateY = winH / 2 - (imgRect.y + imgOuterH / 2);
+
+      $newImg.attr('class', this.className);
+      $newImg.attr('src', this.src);
+      $newImg.addClass('show');
+      $newImg.css({
+        left: $(this).offset().left + (imgOuterW - imgW) / 2,
+        top: $(this).offset().top + (imgOuterH - imgH) / 2,
+        width: imgW,
+        height: imgH
+      });
+      $(this).addClass('hide');
+      $('body')
+        .append($newImgMask)
+        .append($newImg);
+      $newImgMask.velocity({ opacity: 1 });
+      $newImg.velocity(
+        {
+          translateX: translateX,
+          translateY: translateY,
+          scale: scale
+        },
+        {
+          duration: 300,
+          easing: [0.2, 0, 0.2, 1]
+        }
+      );
+    });
+
+    function closeZoom () {
+      $newImg.velocity('reverse');
+      $newImgMask.velocity('reverse', {
+        complete: function () {
+          $('.zoom-image.show').remove();
+          $('.zoom-image-mask').remove();
+          $('.zoom-image').removeClass('hide');
+        }
+      });
+    }
+  },
+  /**
+   * Add the header to code block.
+   * @param {string} type The type of header. value: 'carbon' | null.
+   */
+  addCodeHeader: function (type) {
+    $('figure.highlight').each(function () {
+      if (!$(this).find('figcaption')[0]) {
+        var content = '';
+        if (!type) {
+          var CODEBLOCK_CLASS_NAME = 'highlight';
+          var lang = $(this)
+            .attr('class')
+            .split(/\s/)
+            .filter(function (e) {
+              return e !== CODEBLOCK_CLASS_NAME;
+            });
+
+          content += `<div class="custom-lang">${lang}</div>`;
+        } else if (type === 'carbon') {
+          content += `
+            <div class="custom-carbon">
+              <div class="custom-carbon-dot custom-carbon-dot--red"></div>
+              <div class="custom-carbon-dot custom-carbon-dot--yellow"></div>
+              <div class="custom-carbon-dot custom-carbon-dot--green"></div>
+            </div>
+          `;
+        }
+
+        $(`<figcaption class="custom">${content}</figcaption>`).insertBefore(
+          $(this)
+            .children()
+            .first()
+        );
+      }
+    });
+  },
+  addCopyButton: function (type) {
+    var btnContainer = '.post-copyright,';
+    var faPrefix = (CONFIG.fontawesome && CONFIG.fontawesome.prefix) || 'fa';
+    var $copyIcon = $(
+      `<div class="copy-button" data-popover="${CONFIG.prompt.copy_button}" data-popover-pos="up">` +
+        `<i class="${faPrefix} fa-clipboard"></i>` +
+        '</div>'
+    );
+
+    if (type === 'simple' || type === 'carbon') {
+      btnContainer += '.highlight figcaption:not(".custom")';
+    } else {
+      btnContainer += '.highlight figcaption';
+    }
+    // Add a copy button to the selected elements.
+    $(btnContainer).append($copyIcon);
+  },
+  registerCopyEvent: function () {
+    $('.copy-button').on('click', function () {
+      var container = null;
+      // Select the container of code block.
+      var codeContainer = $(this)
+        .parents('figure.highlight')
+        .find('td.code')[0];
+
+      if (codeContainer) {
+        container = codeContainer;
+      } else {
+        // Select the container of text.
+        container = $(this).parent()[0];
+      }
+      if (Stun.utils.copyText(container)) {
+        Stun.utils.popAlert('success', CONFIG.prompt.copy_success);
+      } else {
+        Stun.utils.popAlert('error', CONFIG.prompt.copy_error);
+      }
+    });
+  },
+  /**
+   * Wait for all images to load.
+   * @param {String} selector jQuery selector.
+   * @param {Function} callback Callback.
+   */
+  waitAllImageLoad: function (selector, callback) {
+    var imgDefereds = [];
+    $(selector).each(function () {
+      var dfd = $.Deferred();
+      $(this).bind('load', function () {
+        dfd.resolve();
+      });
+
+      if (this.complete) {
+        setTimeout(function () {
+          dfd.resolve();
+        }, 500);
+      }
+      imgDefereds.push(dfd);
+    });
+    $.when.apply(null, imgDefereds).then(callback);
+  }
+};
