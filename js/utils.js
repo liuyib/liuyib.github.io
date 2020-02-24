@@ -356,7 +356,7 @@ Stun.utils = Stun.$u = {
     var gConfig = CONFIG.gallery_waterfall;
     var colWidth = parseInt(gConfig.col_width);
     var colGapX = parseInt(gConfig.gap_x);
-    var GALLERY_IMG_SELECTOR = '.gallery__img';
+    var GALLERY_IMG_SELECTOR = '.gallery img';
 
     this.waitAllImageLoad(GALLERY_IMG_SELECTOR, function () {
       $('.gallery').masonry({
@@ -431,7 +431,7 @@ Stun.utils = Stun.$u = {
       });
 
     var $imgMask = $('<div class="zoomimg-mask"></div>');
-    var $imgBox = $('<div class="zoomimg-box"></div>');
+    var $imgClone = null;
     var isZoom = false;
 
     $(window).on('scroll', closeZoom);
@@ -444,7 +444,11 @@ Stun.utils = Stun.$u = {
         return;
       }
       isZoom = true;
+      $imgClone = $(this)
+        .clone()
+        .addClass('zoomimg-clone');
 
+      var SIDE_GAP = parseInt(CONFIG.zoom_image.gap_aside || 20);
       var imgRect = this.getBoundingClientRect();
       var imgOuterW = $(this).outerWidth();
       var imgOuterH = $(this).outerHeight();
@@ -452,22 +456,35 @@ Stun.utils = Stun.$u = {
       var imgH = $(this).height();
       var imgL = $(this).offset().left + (imgOuterW - imgW) / 2;
       var imgT = $(this).offset().top + (imgOuterH - imgH) / 2;
-      var winW = $(window).width();
-      var winH = $(window).height();
+      var winW = $(window).width() - SIDE_GAP * 2;
+      var winH = $(window).height() - SIDE_GAP * 2;
       var scaleX = winW / imgW;
       var scaleY = winH / imgH;
       var scale = (scaleX < scaleY ? scaleX : scaleY) || 1;
-      var translateX = winW / 2 - (imgRect.x + imgOuterW / 2);
-      var translateY = winH / 2 - (imgRect.y + imgOuterH / 2);
+      var translateX = winW / 2 - (imgRect.x + imgOuterW / 2) + SIDE_GAP;
+      var translateY = winH / 2 - (imgRect.y + imgOuterH / 2) + SIDE_GAP;
 
-      $imgBox.css({ width: imgOuterW, height: imgOuterH });
-      $imgBox.addClass($(this).attr('class'));
-      $imgBox.insertBefore(this);
-      $(this).css({ left: imgL, top: imgT, width: imgW, height: imgH });
-      $(this).addClass('zoomimg--show');
-      $('body').append($imgMask);
-      $imgMask.velocity({ opacity: 1 });
-      $('.zoomimg--show').velocity({ translateX, translateY, scale });
+      $(this).addClass('zoomimg--hide');
+      $('body')
+        .append($imgMask)
+        .append($imgClone);
+      $imgMask.velocity({
+        opacity: 1
+      });
+      $imgClone.css({
+        left: imgL,
+        top: imgT,
+        width: imgW,
+        height: imgH
+      });
+      $imgClone.velocity(
+        {
+          translateX: translateX,
+          translateY: translateY,
+          scale: scale
+        },
+        { duration: 300 }
+      );
     });
 
     function closeZoom () {
@@ -475,15 +492,15 @@ Stun.utils = Stun.$u = {
         return;
       }
 
-      $('.zoomimg-mask').remove();
-      $('.zoomimg--show').velocity('reverse', {
+      isZoom = false;
+      $imgClone.velocity('reverse');
+      $imgMask.velocity('reverse', {
         complete: function () {
-          $('.zoomimg--show').removeAttr('style');
-          $('.zoomimg').removeClass('zoomimg--show');
-          $('.zoomimg-box').remove();
+          $imgMask.remove();
+          $imgClone.remove();
+          $('.zoomimg').removeClass('zoomimg--hide');
         }
       });
-      isZoom = false;
     }
   },
   /**

@@ -611,42 +611,6 @@ kbd {
   -ms-transform: rotate(0);
   transform: rotate(0);
 }
-body {
-  position: relative;
-}
-body::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  height: 100vh;
-  z-index: -1;
-  background-color: rgba(0,0,0,0.1);
-}
-body::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  height: 100vh;
-  z-index: -2;
-  background: url("/assets/bg-dot.png") no-repeat center/cover;
-  background-repeat: repeat;
-  -webkit-background-size: auto;
-  -moz-background-size: auto;
-  background-size: auto;
-}
-.nightmode body::before {
-  background-color: rgba(0,0,0,0.6);
-}
 .container {
   white-space: normal;
   word-wrap: break-word;
@@ -702,7 +666,7 @@ body::after {
   font-size: 16px;
 }
 .content-wrap {
-  width: calc(100% - 330px);
+  width: calc(100% - 310px);
   float: right;
 }
 .content {
@@ -1136,7 +1100,7 @@ body::after {
   padding: 1rem 2rem;
   background-color: var(--color-card);
   padding: 1rem;
-  width: 300px;
+  width: 280px;
   font-size: 16px;
 }
 .sidebar--sticky {
@@ -1153,7 +1117,7 @@ body::after {
   display: none;
 }
 .sidebar-wrap {
-  width: 300px;
+  width: 280px;
   float: left;
 }
 .sidebar-nav {
@@ -2520,15 +2484,12 @@ body::after {
 .zoomimg {
   cursor: zoom-in;
 }
-.zoomimg--show {
+.zoomimg--hide {
+  visibility: hidden;
+}
+.zoomimg-clone {
   position: absolute;
   z-index: 1002;
-  margin: 0 !important;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border: none !important;
-  padding: 0 !important;
   cursor: zoom-out;
   will-change: transform;
 }
@@ -2668,7 +2629,7 @@ body::after {
 .post-share {
   margin: 0 0 1rem;
 }
-.gallery__img {
+.gallery img {
   margin-bottom: 10px;
   width: 220px;
 }
@@ -3115,12 +3076,12 @@ html.nightmode {
   content: '|';
   margin: 0 10px;
 }
-@media (min-width: 1098px) {
+@media (min-width: 1110px) {
   .header-nav-inner {
-    width: 1098px;
+    width: 1110px;
   }
   .main-inner {
-    width: 1098px;
+    width: 1110px;
   }
 }
 @media (min-width: 991.98px) {
@@ -3255,7 +3216,7 @@ html.nightmode {
     margin: 0 0 0.8rem;
     padding: 0.8rem;
   }
-  .gallery__img {
+  .gallery img {
     width: 100%;
   }
   .friends-plugin__item {
