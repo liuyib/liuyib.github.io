@@ -78,9 +78,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>这些徽章不仅起到装饰 README 的作用，更给人以安全可靠的感觉。由于好奇，自己也探究了一番。</p>
 
-        <h2   id="给项目装上徽章" >
-          <span class="heading-link">给项目装上徽章</span>
-        </h2>
+        <h2 id="给项目装上徽章"   >
+          <a href="#给项目装上徽章" class="heading-link"><i class="fas fa-link"></i></a>给项目装上徽章</h2>
       
 <p>想要获取徽章，有很多方式，最简单的可以通过 <span class="exturl"><a class="exturl__link"   href="https://shields.io/"  target="_blank" rel="noopener">shields.io</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 网站获取，基本上想要的徽章都能获取到，没有的也可以进行 DIY，很方便。</p>
 <p>举个例子，将项目的开源协议通过徽章进行展示，你只需要填写 Github 用户名和项目名称，网站就会自动获取你项目中的数据。</p>
@@ -94,9 +93,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>然后你只需要复制链接，将徽章放入你的 README 即可。</p>
 
-        <h2   id="单元测试" >
-          <span class="heading-link">单元测试</span>
-        </h2>
+        <h2 id="单元测试"   >
+          <a href="#单元测试" class="heading-link"><i class="fas fa-link"></i></a>单元测试</h2>
       
 <p>上面所说的开源协议这类徽章基本上只有展示作用，还有一些徽章，用户点击后，可以获取到他们想知道的数据，比如 <code>build passing</code>、<code>coverage 97%</code> 这些徽章是项目进行 CI（Continuous integration, 持续集成）测试和生成代码覆盖率报告后，展示出来的徽章。当用户点击它们，就可以看到项目 CI 测试的情况和代码覆盖率的报告图。</p>
 <p>为什么要展示代码覆盖率？原因很简单，代码覆盖率常常被认为是衡量单元测试好坏的一个指标，而单元测试的好坏在某种程度上又会反应项目代码的质量。因此当项目挂上 <code>coverage: 100%</code> 的徽章时，总给人以满满的安全感。</p>
@@ -113,9 +111,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>举的这个例子没有涉及测试运行器，只讲了测试框架、断言库和测试覆盖率的使用。以我个人比较喜欢的 <code>mocha + should + istanbul</code> 组合为例。</p>
 </blockquote>
 
-        <h3   id="建立项目" >
-          <span class="heading-link">建立项目</span>
-        </h3>
+        <h3 id="建立项目"   >
+          <a href="#建立项目" class="heading-link"><i class="fas fa-link"></i></a>建立项目</h3>
       
 <p>首先，执行 <code>npm init --yes</code> 创建 package.json 文件。</p>
 <p>然后，新建一个 main.js 文件，编写 factorial 函数，用于求一个数的阶乘。</p>
@@ -127,9 +124,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>结果是 120，符合预期。但是一个测试例子并不能说明什么，我们还需要验证如果输入，负数、非数字、小数、很大的数等等，程序会返回什么。所以接下来我们将进行 <strong>测试驱动开发</strong>（Test-Driven Development, TDD），通过不断的测试来逐步完善我们的代码。</p>
 
-        <h3   id="运行测试" >
-          <span class="heading-link">运行测试</span>
-        </h3>
+        <h3 id="运行测试"   >
+          <a href="#运行测试" class="heading-link"><i class="fas fa-link"></i></a>运行测试</h3>
       
 <p>在 main.js 中添加一句 <code>exports.fibonacci = fibonacci;</code> 将函数暴露出去。这样才可以在其他文件中 <code>require</code> 这个函数。</p>
 <p>在 test 目录下新建测试文件，命名为 <code>main.test.js</code>。然后在测试文件中引用 fibonacci 函数，并使用 mocha 和 should 进行测试。</p>
@@ -148,9 +144,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>到这里，我们已经使用测试框架 + 断言库进行了最简单的测试，接下来需要不断完善测试用例来使我们的代码健壮起来。</p>
 
-        <h3   id="完善测试用例" >
-          <span class="heading-link">完善测试用例</span>
-        </h3>
+        <h3 id="完善测试用例"   >
+          <a href="#完善测试用例" class="heading-link"><i class="fas fa-link"></i></a>完善测试用例</h3>
       
 <p>首先，明确函数功能。我们的 factorial 函数应该有以下功能。</p>
 <ul>
@@ -176,9 +171,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>完美通过测试。这就是测试驱动开发的流程，首先明确程序的功能，然后跑测试用例，如果测试用例没有通过，修改程序，直到测试用例通过。</p>
 
-        <h3   id="生成代码覆盖率" >
-          <span class="heading-link">生成代码覆盖率</span>
-        </h3>
+        <h3 id="生成代码覆盖率"   >
+          <a href="#生成代码覆盖率" class="heading-link"><i class="fas fa-link"></i></a>生成代码覆盖率</h3>
       
 <p>有一个指标用于检测编写的测试用例是否合理。这个指标叫做 “代码覆盖率”。它包含四个方面。</p>
 <ul>
@@ -207,9 +201,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
           src="/images/loading.svg" data-src="https://raw.githubusercontent.com/liuyib/picBed/master/hexo-blog/post/20190604201923.png"  alt="" />
       </p>
 
-        <h3   id="上传代码覆盖率" >
-          <span class="heading-link">上传代码覆盖率</span>
-        </h3>
+        <h3 id="上传代码覆盖率"   >
+          <a href="#上传代码覆盖率" class="heading-link"><i class="fas fa-link"></i></a>上传代码覆盖率</h3>
       
 <p>主流的的展示代码覆盖率的工具有 <span class="exturl"><a class="exturl__link"   href="https://codecov.io/"  target="_blank" rel="noopener">Codecov</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 和 <span class="exturl"><a class="exturl__link"   href="https://coveralls.io/"  target="_blank" rel="noopener">Coveralls</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。至于选择哪一个，答案是都可以，不过 Coveralls 网站的界面有种古典的气息，相比之下我更喜欢 Codecov，所以这里以 Codecov 为例。</p>
 <p>首先，打开 Codecov 官网，绑定 Github 账号之后，选择要展示覆盖率的仓库。</p>
@@ -222,17 +215,15 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </blockquote>
 <p>下面会讲如何在 CI 中上传代码覆盖率。</p>
 
-        <h2   id="持续集成" >
-          <span class="heading-link">持续集成</span>
-        </h2>
+        <h2 id="持续集成"   >
+          <a href="#持续集成" class="heading-link"><i class="fas fa-link"></i></a>持续集成</h2>
       
 <p>了解了单元测试和代码覆盖率后，这还不够，因为我们不可能每次都手动运行测试脚本，我们需要的是自动化测试。这就涉及到了持续集成的概念。</p>
 <p>持续集成是一种软件开发实践，每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。</p>
 <p>主流的持续集成工具有 <span class="exturl"><a class="exturl__link"   href="https://travis-ci.org/"  target="_blank" rel="noopener">Travis CI</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 和 <span class="exturl"><a class="exturl__link"   href="https://circleci.com/"  target="_blank" rel="noopener">Circle CI</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，个人比较喜欢前者，因此这里以 Travis CI 为例。</p>
 
-        <h3   id="travis-ci-的使用" >
-          <span class="heading-link">Travis CI 的使用</span>
-        </h3>
+        <h3 id="travis-ci-的使用"   >
+          <a href="#travis-ci-的使用" class="heading-link"><i class="fas fa-link"></i></a>Travis CI 的使用</h3>
       
 <p>首先，进入官网后，点击 Sign In 按钮绑定 Github。然后在仓库列表中选择你要进行持续集成的仓库，点击按钮启用。</p>
 <p>
@@ -259,9 +250,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>这里建议不要将 mocha 全局安装，而且依赖包最好都项目级安装。</p>
 </blockquote>
 
-        <h3   id="带上你的荣誉徽章" >
-          <span class="heading-link">带上你的荣誉徽章</span>
-        </h3>
+        <h3 id="带上你的荣誉徽章"   >
+          <a href="#带上你的荣誉徽章" class="heading-link"><i class="fas fa-link"></i></a>带上你的荣誉徽章</h3>
       
 <p>实现了 CI，也上传了代码覆盖率，接下来我们只需要将结果以徽章的形式放入 READMD 即可。</p>
 <p>Travis 的徽章这样获取。</p>
@@ -276,35 +266,23 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       </p>
 <p>每当项目 commit 之后，CI 测试就会自动进行，然后测试的结果就会通过徽章展示在你的项目文档中。</p>
 
-        <h3   id="跨浏览器集成测试" >
-          <span class="heading-link">跨浏览器集成测试</span>
-        </h3>
+        <h3 id="跨浏览器集成测试"   >
+          <a href="#跨浏览器集成测试" class="heading-link"><i class="fas fa-link"></i></a>跨浏览器集成测试</h3>
       
 <p>浏览器端使用的库，在各个浏览器端的兼容性也是非常重要的。一些项目会选择在模拟环境中进行测试，这样虽然方便，但是毕竟是模拟的，测试效果无法媲美真实环境。所以就需要用到跨浏览器测试的工具，有两个选择 <span class="exturl"><a class="exturl__link"   href="https://saucelabs.com/"  target="_blank" rel="noopener">SauceLabs</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 和 <span class="exturl"><a class="exturl__link"   href="https://www.browserstack.com/"  target="_blank" rel="noopener">BrowserStack</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，这个工具提供了多重的浏览器环境（包括 PC 端和移动端），帮助你在多种浏览器中自动运行脚本。</p>
 <p>关于跨浏览器集成测试更详尽的使用，推荐阅读：<span class="exturl"><a class="exturl__link"   href="https://segmentfault.com/a/1190000007221668#articleHeader3"  target="_blank" rel="noopener">前端持续集成解决方案</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感觉您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/">https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Github%E5%BE%BD%E7%AB%A0/">Github徽章</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">分享到：</div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://cdn.jsdelivr.net/gh/liuyib/picBed@master/hexo-blog/20190529222805.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://cdn.jsdelivr.net/gh/liuyib/picBed@master/hexo-blog/20190529222806.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2019/07/26/theme-stun-gitter/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">theme-stun-gitter</span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#给项目装上徽章"><span class="toc-number">1.</span> <span class="toc-text">
-          给项目装上徽章
-        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-number">2.</span> <span class="toc-text">
-          单元测试
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立项目"><span class="toc-number">2.1.</span> <span class="toc-text">
-          建立项目
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行测试"><span class="toc-number">2.2.</span> <span class="toc-text">
-          运行测试
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完善测试用例"><span class="toc-number">2.3.</span> <span class="toc-text">
-          完善测试用例
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成代码覆盖率"><span class="toc-number">2.4.</span> <span class="toc-text">
-          生成代码覆盖率
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传代码覆盖率"><span class="toc-number">2.5.</span> <span class="toc-text">
-          上传代码覆盖率
-        </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续集成"><span class="toc-number">3.</span> <span class="toc-text">
-          持续集成
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#travis-ci-的使用"><span class="toc-number">3.1.</span> <span class="toc-text">
-          Travis CI 的使用
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带上你的荣誉徽章"><span class="toc-number">3.2.</span> <span class="toc-text">
-          带上你的荣誉徽章
-        </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨浏览器集成测试"><span class="toc-number">3.3.</span> <span class="toc-text">
-          跨浏览器集成测试
-        </span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/liuyib/picBed@master/hexo-blog/20190528162910.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">write code and love life</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/liuyib/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/liuyib/" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/liu-yibo-64-65/activities/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://juejin.im/user/5ad6b350f265da2397076275/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="http://eepurl.com/guAE6j" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS 订阅</span></a></span></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyib. All Rights Reserved.</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.0.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v1.7.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>托管于 <a href="https://pages.github.com/" rel="noopener" target="_blank">Github Pages</a></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+          给项目装上徽章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-number">2.</span> <span class="toc-text">
+          单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立项目"><span class="toc-number">2.1.</span> <span class="toc-text">
+          建立项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行测试"><span class="toc-number">2.2.</span> <span class="toc-text">
+          运行测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完善测试用例"><span class="toc-number">2.3.</span> <span class="toc-text">
+          完善测试用例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成代码覆盖率"><span class="toc-number">2.4.</span> <span class="toc-text">
+          生成代码覆盖率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传代码覆盖率"><span class="toc-number">2.5.</span> <span class="toc-text">
+          上传代码覆盖率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续集成"><span class="toc-number">3.</span> <span class="toc-text">
+          持续集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#travis-ci-的使用"><span class="toc-number">3.1.</span> <span class="toc-text">
+          Travis CI 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带上你的荣誉徽章"><span class="toc-number">3.2.</span> <span class="toc-text">
+          带上你的荣誉徽章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨浏览器集成测试"><span class="toc-number">3.3.</span> <span class="toc-text">
+          跨浏览器集成测试</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/liuyib/picBed@master/hexo-blog/20190528162910.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">write code and love life</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/liuyib/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/liuyib/" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/liu-yibo-64-65/activities/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://juejin.im/user/5ad6b350f265da2397076275/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="http://eepurl.com/guAE6j" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS 订阅</span></a></span></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyib. All Rights Reserved.</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.0.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v1.7.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>托管于 <a href="https://pages.github.com/" rel="noopener" target="_blank">Github Pages</a></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.json';
 
@@ -655,7 +633,7 @@ if (true) {
 } else {
   window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=1.7.0"></script><script src="/js/stun-boot.js?v=1.7.0"></script><script src="/js/scroll.js?v=1.7.0"></script><script src="/js/header.js?v=1.7.0"></script><script src="/js/sidebar.js?v=1.7.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js?t=1582541864019')
+  navigator.serviceWorker.register('/service-worker.js?t=1582625671118')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

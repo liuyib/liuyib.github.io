@@ -25,9 +25,8 @@
     
     <summary type="html">
     
-      &lt;h2   id=&quot;前言&quot; &gt;
-          &lt;span class=&quot;heading-link&quot;&gt;前言&lt;/span&gt;
-        &lt;/h2&gt;
+      &lt;h2 id=&quot;前言&quot;   &gt;
+          &lt;a href=&quot;#前言&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;前言&lt;/h2&gt;
       
 &lt;p&gt;一般情况下，当我们点击一个网页链接后，浏览器就会努力发送网络请求，然后将请求到的网页渲染出来。有时，我们经常会在一个网站中不停地点击链接，然后网页不停地跳转。通常，浏览器会对文件资源进行一定的缓存，这样使得同一个网站之间的页面跳转时，能够更快的加载。&lt;/p&gt;
 &lt;p&gt;虽然浏览器对资源的缓存加快了页面的加载速度，但是页面每一次跳转时，都会整体刷新一次，这一定程度上降低了用户体验。为了解决这一问题，我们可以使用 Pjax 实现网站无刷新加载。&lt;/p&gt;
@@ -54,9 +53,8 @@
     
     <summary type="html">
     
-      &lt;h2   id=&quot;前言&quot; &gt;
-          &lt;span class=&quot;heading-link&quot;&gt;前言&lt;/span&gt;
-        &lt;/h2&gt;
+      &lt;h2 id=&quot;前言&quot;   &gt;
+          &lt;a href=&quot;#前言&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;前言&lt;/h2&gt;
       
 &lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github issues 里写&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/blog/issues&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github issues 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;
 &lt;p&gt;使用 Hexo 首先是要挑选喜欢的主题，以我个人的感受来讲，Hexo 的主题虽然有两百多个，但是能拿出手的也就不到二十个。其中我最佩服的主题 Next 已经足够优秀，但是风格我并不喜欢，最后决定自己开坑。&lt;/p&gt;
