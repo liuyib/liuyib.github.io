@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</loc>
+    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
     
-    <lastmod>2020-03-18T07:19:39.900Z</lastmod>
+    <lastmod>2020-03-27T13:29:35.040Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
+    <loc>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</loc>
     
-    <lastmod>2020-03-18T07:19:29.478Z</lastmod>
+    <lastmod>2020-03-27T13:13:34.428Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</loc>
+    
+    <lastmod>2020-03-27T13:13:17.056Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</loc>
+    
+    <lastmod>2020-03-25T09:32:58.750Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>https://liuyib.github.io/404.html</loc>
     
     <lastmod>2020-02-10T11:00:56.378Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</loc>
-    
-    <lastmod>2020-01-15T11:04:02.696Z</lastmod>
     
   </url>
   
