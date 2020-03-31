@@ -399,9 +399,6 @@ a {
   outline: none;
   cursor: pointer;
 }
-ul {
-  padding-left: 1.5em;
-}
 img,
 video,
 iframe {
@@ -451,6 +448,7 @@ table {
 th,
 td {
   border: 1px solid var(--color-blue-200);
+  padding: 0 5px;
 }
 acronym,
 abbr {
@@ -489,7 +487,7 @@ kbd {
   position: absolute;
   top: 0;
   left: 50%;
-  z-index: 1001;
+  z-index: 2;
   font-family: sans-serif, Arial;
   font-size: 14px;
   font-weight: normal;
@@ -535,7 +533,7 @@ kbd {
   position: fixed;
   top: 1rem;
   left: 50%;
-  z-index: 1002;
+  z-index: 2;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -o-transform: translateX(-50%);
@@ -736,7 +734,7 @@ kbd {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1001;
+  z-index: 1;
   width: 100%;
   height: 50px;
   -webkit-transition: -webkit-transform 0.2s ease-out, background-color 0.2s ease;
@@ -908,6 +906,7 @@ kbd {
 }
 .header-banner {
   position: relative;
+  z-index: 0;
   width: 100%;
   height: 100%;
   background: url("/assets/banner/1.jpg") no-repeat center/cover;
@@ -918,7 +917,7 @@ kbd {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: -1;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
@@ -927,7 +926,6 @@ kbd {
   position: absolute;
   top: 50%;
   left: 0;
-  z-index: 1000;
   padding: 0 0.5rem;
   width: 100%;
   text-align: center;
@@ -953,7 +951,6 @@ kbd {
   position: absolute;
   bottom: 1rem;
   left: calc(50% - 1rem);
-  z-index: 1000;
   width: 2rem;
   height: 2rem;
   text-align: center;
@@ -1225,7 +1222,7 @@ kbd {
 .sidebar--sticky {
   position: fixed;
   top: 20px;
-  z-index: 1000;
+  z-index: 0;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -o-transform: translateZ(0);
@@ -1603,7 +1600,7 @@ kbd {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1002;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background-color: rgba(51,51,51,0.7);
@@ -1613,7 +1610,7 @@ kbd {
   position: fixed;
   top: 10%;
   left: 50%;
-  z-index: 1002;
+  z-index: 2;
   margin-left: -350px;
   border-radius: 5px;
   padding: 1rem;
@@ -1622,9 +1619,6 @@ kbd {
   font-size: 16px;
   color: var(--color-gray-700);
   background-color: var(--color-gray-250);
-}
-.search-popup.show {
-  will-change: transform;
 }
 .search-input {
   margin: 1rem 0;
@@ -1643,10 +1637,6 @@ kbd {
   -o-transition: border-color 0.3s;
   -ms-transition: border-color 0.3s;
   transition: border-color 0.3s;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 .search-input input:hover,
 .search-input input:focus {
@@ -1748,8 +1738,20 @@ kbd {
   content: '';
   position: absolute;
   top: 1em;
+  bottom: -1em;
   left: 0;
-  z-index: 1000;
+  border-left: 0.2rem dashed var(--color-gray-250);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.archive-total::after {
+  content: '';
+  position: absolute;
+  top: 1em;
+  left: 0;
   border: 0.15rem solid #6ec5ff;
   border-radius: 50%;
   width: 0.6rem;
@@ -1766,20 +1768,7 @@ kbd {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.archive-total::after {
-  content: '';
-  position: absolute;
-  top: 1em;
-  bottom: -1em;
-  left: 0;
-  border-left: 0.2rem dashed var(--color-gray-250);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-.archive-total:hover::before {
+.archive-total:hover::after {
   border-color: #fc6423;
 }
 .tagcloud,
@@ -1881,7 +1870,6 @@ kbd {
   position: absolute;
   top: 50%;
   left: 0;
-  z-index: 1000;
   border-radius: 50%;
   width: 0.3rem;
   height: 0.3rem;
@@ -2602,7 +2590,7 @@ kbd {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1001;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.6);
@@ -2618,7 +2606,7 @@ kbd {
 }
 .zoomimg-clone {
   position: absolute;
-  z-index: 1002;
+  z-index: 2;
   cursor: zoom-out;
   will-change: transform;
 }
