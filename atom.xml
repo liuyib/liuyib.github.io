@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2020-03-27T14:11:12.280Z</updated>
+  <updated>2020-04-02T07:48:55.056Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"/>
     <id>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</id>
     <published>2020-03-20T08:04:11.000Z</published>
-    <updated>2020-03-27T14:11:12.280Z</updated>
+    <updated>2020-04-02T07:48:55.056Z</updated>
     
     <summary type="html">
     
@@ -47,12 +47,11 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T12:49:16.000Z</published>
-    <updated>2020-03-25T09:32:58.750Z</updated>
+    <updated>2020-04-02T08:10:52.068Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;一般情况下，当我们点击一个网页链接后，浏览器就会努力发送网络请求，然后将请求到的网页渲染出来。有时，我们经常会在一个网站中不停地点击链接，然后网页不停地跳转。通常，浏览器会对文件资源进行一定的缓存，这样使得同一个网站之间的页面跳转时，能够更快的加载。&lt;/p&gt;
-&lt;p&gt;虽然浏览器对资源的缓存加快了页面的加载速度，但是页面每一次跳转时，都会整体刷新一次，这一定程度上降低了用户体验。为了解决这一问题，我们可以使用 Pjax 实现网站无刷新加载。&lt;/p&gt;
     
     </summary>
     
@@ -72,7 +71,7 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T10:20:24.000Z</published>
-    <updated>2020-03-27T13:13:34.428Z</updated>
+    <updated>2020-04-02T07:48:50.238Z</updated>
     
     <summary type="html">
     
@@ -92,7 +91,7 @@
     <link href="https://liuyib.github.io/2019/07/26/theme-stun-gitter/"/>
     <id>https://liuyib.github.io/2019/07/26/theme-stun-gitter/</id>
     <published>2019-07-26T01:38:55.000Z</published>
-    <updated>2020-03-25T07:43:50.155Z</updated>
+    <updated>2020-04-02T07:51:45.186Z</updated>
     
     <summary type="html">
     
@@ -114,7 +113,7 @@
     <link href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"/>
     <id>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</id>
     <published>2019-06-04T14:54:49.000Z</published>
-    <updated>2020-03-27T13:29:35.040Z</updated>
+    <updated>2020-04-02T08:00:28.015Z</updated>
     
     <summary type="html">
     
