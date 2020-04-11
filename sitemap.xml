@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
+    
+    <lastmod>2020-04-11T14:39:01.436Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</loc>
+    
+    <lastmod>2020-04-11T14:37:37.756Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</loc>
+    
+    <lastmod>2020-04-11T14:37:26.713Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</loc>
+    
+    <lastmod>2020-04-11T14:37:22.461Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuyib.github.io/2020/04/07/css-h-and-v-center/</loc>
     
-    <lastmod>2020-04-07T03:02:04.493Z</lastmod>
+    <lastmod>2020-04-10T14:35:25.186Z</lastmod>
     
   </url>
   
@@ -12,34 +40,6 @@
     <loc>https://liuyib.github.io/404.html</loc>
     
     <lastmod>2020-04-02T08:12:48.858Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</loc>
-    
-    <lastmod>2020-04-02T08:12:09.905Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</loc>
-    
-    <lastmod>2020-04-02T08:11:55.407Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</loc>
-    
-    <lastmod>2020-04-02T08:00:28.015Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</loc>
-    
-    <lastmod>2020-04-02T07:48:55.056Z</lastmod>
     
   </url>
   
