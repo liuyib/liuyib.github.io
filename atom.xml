@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2020-04-10T14:35:25.186Z</updated>
+  <updated>2020-04-18T12:24:18.972Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入探究 SSL/TLS 协议</title>
+    <link href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"/>
+    <id>https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</id>
+    <published>2020-04-18T08:25:07.000Z</published>
+    <updated>2020-04-18T12:24:18.972Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SSL/TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。&lt;/p&gt;
+
+        &lt;h2 id=&quot;http-为什么不安全&quot;   &gt;
+          &lt;a href=&quot;#http-为什么不安全&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;HTTP 为什么不安全&lt;/h2&gt;
+      
+&lt;p&gt;HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Web 安全" scheme="https://liuyib.github.io/categories/Web-%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="SSL/TLS" scheme="https://liuyib.github.io/tags/SSL-TLS/"/>
+    
+      <category term="HTTPS" scheme="https://liuyib.github.io/tags/HTTPS/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS 拷问：水平垂直居中方法你会几种？</title>
@@ -43,7 +70,7 @@
     <link href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"/>
     <id>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</id>
     <published>2020-03-20T08:04:11.000Z</published>
-    <updated>2020-04-11T14:37:26.713Z</updated>
+    <updated>2020-04-18T12:24:55.830Z</updated>
     
     <summary type="html">
     
@@ -69,7 +96,7 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T12:49:16.000Z</published>
-    <updated>2020-04-11T14:37:22.461Z</updated>
+    <updated>2020-04-18T12:24:59.569Z</updated>
     
     <summary type="html">
     
@@ -93,7 +120,7 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T10:20:24.000Z</published>
-    <updated>2020-04-11T14:37:37.756Z</updated>
+    <updated>2020-04-18T12:24:38.149Z</updated>
     
     <summary type="html">
     
@@ -113,7 +140,7 @@
     <link href="https://liuyib.github.io/2019/07/26/theme-stun-gitter/"/>
     <id>https://liuyib.github.io/2019/07/26/theme-stun-gitter/</id>
     <published>2019-07-26T01:38:55.000Z</published>
-    <updated>2020-04-02T07:51:45.186Z</updated>
+    <updated>2020-04-18T12:24:51.306Z</updated>
     
     <summary type="html">
     
@@ -135,7 +162,7 @@
     <link href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"/>
     <id>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</id>
     <published>2019-06-04T14:54:49.000Z</published>
-    <updated>2020-04-11T14:39:01.436Z</updated>
+    <updated>2020-04-18T12:24:43.209Z</updated>
     
     <summary type="html">
     
