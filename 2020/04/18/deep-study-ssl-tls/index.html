@@ -6,10 +6,10 @@
 <meta property="og:site_name" content="Liuyib&#39;s Blog">
 <meta property="og:description" content="SSL&#x2F;TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。                     HTTP 为什么不安全        HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/img/ssl-say-hello.png">
-<meta property="og:updated_time" content="2020-04-18T12:24:18.972Z">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-three-handshake.png">
+<meta property="og:updated_time" content="2020-04-19T13:40:08.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/img/ssl-say-hello.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-three-handshake.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -58,7 +58,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-flask"></i></span><span class="header-nav-menu-item__text">实验室</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener"><span class="header-nav-submenu-item__text">🦄 Stun</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-fingerprint"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/reprint/"><span class="header-nav-submenu-item__icon"><i class="fas fa-reply"></i></span><span class="header-nav-submenu-item__text">转载</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">其他</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">相册</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-hand-spock"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liuyib's Blog</div><div class="header-banner-info__subtitle">write code and love life</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">深入探究 SSL/TLS 协议</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-04-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-04-18</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">4.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">22分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>SSL/TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。</p>
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-flask"></i></span><span class="header-nav-menu-item__text">实验室</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener"><span class="header-nav-submenu-item__text">🦄 Stun</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-fingerprint"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/reprint/"><span class="header-nav-submenu-item__icon"><i class="fas fa-reply"></i></span><span class="header-nav-submenu-item__text">转载</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">其他</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">相册</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-hand-spock"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liuyib's Blog</div><div class="header-banner-info__subtitle">write code and love life</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">深入探究 SSL/TLS 协议</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-04-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-04-19</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">4.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">22分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>SSL/TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。</p>
 
         <h2 id="http-为什么不安全"   >
           <a href="#http-为什么不安全" class="heading-link"><i class="fas fa-link"></i></a>HTTP 为什么不安全</h2>
@@ -81,7 +81,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <ul>
 <li>
 <p>连接是安全的</p>
-<p>因为使用对称加密算法来加密传输的数据。对称加密的密钥是基于 TLS 握手阶段协商的<span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Key_exchange_or_key_agreement"  target="_blank" rel="noopener">加密算法</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>和<span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Shared_secret"  target="_blank" rel="noopener">共享密钥</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，为每一个连接唯一生成的。</p>
+<p>因为传输的数据进行了加密（使用对称加密算法）。并且对称加密的密钥是为每一个连接唯一生成的（基于 TLS 握手阶段协商的<span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Key_exchange_or_key_agreement"  target="_blank" rel="noopener">加密算法</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>和<span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Shared_secret"  target="_blank" rel="noopener">共享密钥</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）。</p>
 <p>其中，<strong>共享密钥</strong>的协商是安全可靠的。如果有攻击者修改了通信，那么该修改一定会被检测出来并被阻止。并且即使攻击者处于整个连接的中间（窃听 TLS 握手），也无法利用窃听到的密钥。</p>
 </li>
 <li>
@@ -94,7 +94,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </li>
 </ul>
 <p>TLS 协议包括两层：<span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_record"  target="_blank" rel="noopener">TLS 记录</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>和 <span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_handshake"  target="_blank" rel="noopener">TLS 握手协议</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。本文主要讲述 TLS 握手协议。</p>
-<p>由于诸多原因（主要是安全方面），SSL 协议三个版本（<code>SSL 1.0</code>，<code>SSL 2.0</code>，<code>SSL 3.0</code>）都已弃用。并且 <code>TLS 1.0</code>，<code>TLS 1.1</code> 版本也将在 2020 年弃用，因此目前主流的通信加密协议版本是 <code>TLS 1.2</code> 和 <code>TLS 1.3</code>。</p>
+<p>由于诸多原因（主要是安全方面），SSL 协议的所有版本（SSL 1.0、SSL 2.0、SSL 3.0）都已弃用。并且 TLS 1.0、TLS 1.1 也将在 2020 年弃用，因此目前主流的通信加密协议版本是 TLS 1.2 和 TLS 1.3。</p>
 
         <h2 id="tls-握手"   >
           <a href="#tls-握手" class="heading-link"><i class="fas fa-link"></i></a>TLS 握手</h2>
@@ -105,7 +105,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </blockquote>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="./img/ssl-say-hello.png"  alt="" />
+          src="/images/loading.svg" data-src="/assets/posts/deep-study-ssl-tls/tls-three-handshake.png"  alt="" />
       </p>
 <blockquote>
 <p>图片原始来源：<span class="exturl"><a class="exturl__link"   href="https://zh.wikipedia.org/wiki/File:SSL_handshake_with_two_way_authentication_with_certificates.svg"  target="_blank" rel="noopener">Wikipedia - File:SSL handshake with two way authentication with certificates.svg</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，由我翻译并绘制为中文。</p>
@@ -113,15 +113,15 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>详细过程如下：</p>
 <ul>
 <li>
-<p>一次握手</p>
+<p>第一次握手</p>
 <ul>
 <li>
-<p>客户端发送 ClientHello 消息，其中包含<strong>支持的最高 TLS 协议版本</strong>、<strong>随机数</strong>（稍后用于生成 “会话密钥”）、<strong>加密算法列表</strong>（如 RSA 公钥加密）和<strong>压缩算法列表</strong></p>
+<p>客户端发送 ClientHello 消息，其中包含<strong>支持的最高 TLS 协议版本</strong>、<strong>随机数</strong>（稍后用于生成“会话密钥”）、<strong>加密算法列表</strong>（如 RSA 公钥加密）和<strong>压缩算法列表</strong></p>
 <ol>
 <li>
 <p>如果客户端正在尝试恢复握手，则它可以发送会话 ID。</p>
 <blockquote>
-<p>后面会讲到 TLS 握手中断和恢复。</p>
+<p>后面会介绍 TLS 握手中断和恢复。</p>
 </blockquote>
 </li>
 <li>
@@ -130,7 +130,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </ol>
 </li>
 <li>
-<p>服务端回应 ServerHello 消息，其中包含<strong>要使用的 TLS 协议版本</strong>、<strong>随机数</strong>（稍后用于生成 “会话密钥”）、<strong>要使用的加密算法</strong>和<strong>要使用的压缩算法</strong></p>
+<p>服务端回应 ServerHello 消息，其中包含<strong>要使用的 TLS 协议版本</strong>、<strong>随机数</strong>（稍后用于生成“会话密钥”）、<strong>要使用的加密算法</strong>和<strong>要使用的压缩算法</strong></p>
 <ol>
 <li>
 <p>为了确认恢复握手，则服务端可以发送会话 ID。</p>
@@ -143,14 +143,14 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </ul>
 </li>
 <li>
-<p>二次握手</p>
+<p>第二次握手</p>
 <ul>
 <li>
 <p>服务端发送其证书（可选，取决于使用的加密算法）</p>
-<p>目前业内流行的 RSA 算法，就是基于证书的。使用证书也是更推荐的做法，因为相比于无证书的机制，使用证书更安全</p>
+<p>目前主流的 RSA 算法就是基于证书的。使用证书也是更推荐的做法，因为相比于无证书的机制，使用证书更安全</p>
 </li>
 <li>
-<p>服务端发送 ServerKeyExchange 消息（可选，取决于使用的加密算法。DHE 和 DH_anon 算法会用到）</p>
+<p>服务端发送 ServerKeyExchange 消息（可选，取决于使用的加密算法。DHE 和 DH_anon 算法会发送该消息）</p>
 </li>
 <li>
 <p>服务端发送 CertificateRequest 消息，请求获取客户端证书，以便进行相互认证（可选，如果是单向身份认证，通常是服务端认证，则不需要这一步）</p>
@@ -159,12 +159,15 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>服务端发送 ServerHelloDone 消息，表示<strong>服务端握手协商完成</strong>（注意，是协商完成，而不是整个 TLS 握手完成）。</p>
 </li>
 <li>
-<p>客户端校验服务端证书（如果证书不合法，客户端会<strong>向用户发出警告信息</strong>并<strong>断开 TLS 握手</strong>。后面会介绍如何判断证书的合法性）</p>
+<p>客户端校验服务端证书（如果证书不合法，客户端会<strong>向用户发出警告信息</strong>并<strong>断开 TLS 握手</strong>）</p>
+<blockquote>
+<p>后面会介绍如何判断证书的合法性。</p>
+</blockquote>
 </li>
 </ul>
 </li>
 <li>
-<p>三次握手</p>
+<p>第三次握手</p>
 <ul>
 <li>
 <p>客户端发送其证书，供服务端使用和校验（可选，如果是单向身份认证，通常是服务端认证，则不需要这一步）</p>
@@ -182,25 +185,25 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <li>
 <p>到此为止，客户端和服务端都具有了三个随机数（两个随机数 + PMS），然后它们分别使用之前协商的<strong>对称加密算法</strong>和<strong>三个随机数</strong>来生成 Master-Secret，用于加密之后传输的数据</p>
 <blockquote>
-<p>Master-Secret（MS，主密钥，也称为 “会话密钥”）</p>
+<p>Master-Secret（MS，主密钥，也称为“会话密钥”）</p>
 </blockquote>
 </li>
 </ul>
 </li>
 <li>
-<p>四次挥手</p>
+<p>第四次挥手</p>
 <ul>
 <li>
-<p>客户端发送 ChangeCipherSpec 记录，用于告诉服务端 “之后的所有数据都将进行身份验证（如果服务端证书中存在加密参数，则会进行加密）”。具体如下：</p>
+<p>客户端发送 ChangeCipherSpec 记录，用于告诉服务端“之后的所有数据都将进行身份验证（如果服务端证书中存在加密参数，则会进行加密）”。具体如下：</p>
 <ul>
 <li>客户端发送经过身份验证和加密的 Finished 消息，其包含之前所有握手信息的 Hash 和 <span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Message_authentication_code"  target="_blank" rel="noopener">MAC</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 <li>服务端尝试解密 Finished 消息，获取并验证 Hash 和 MAC。如果解密或验证失败，则认为握手失败，断开 TLS 链接。</li>
 </ul>
 </li>
 <li>
-<p>服务端回应 ChangeCipherSpec 记录，同样用于告诉客户端 “之后的所有数据都将进行身份验证（如果服务端证书中存在加密参数，则会进行加密）”。具体如下：</p>
+<p>服务端回应 ChangeCipherSpec 记录，同样用于告诉客户端“之后的所有数据都将进行身份验证（如果服务端证书中存在加密参数，则会进行加密）”。具体如下：</p>
 <ul>
-<li>服务端发送经过身份验证和加密的 Finished 消息</li>
+<li>服务端发送经过身份验证和加密的 Finished 消息，其包含之前所有握手信息的 Hash 和 <span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Message_authentication_code"  target="_blank" rel="noopener">MAC</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 <li>客户端执行与服务端上一步相同的解密和验证过程</li>
 </ul>
 </li>
@@ -213,21 +216,21 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </blockquote>
 <ul>
 <li>
-<p>一次握手</p>
+<p>第一次握手</p>
 <ul>
 <li>客户端发送 TLS 握手请求，其中包含<strong>支持的最高 TLS 协议版本</strong>、<strong>随机数</strong>、<strong>加密算法列表</strong>、<strong>压缩算法列表</strong></li>
 <li>服务端回应请求，回应的内容包含<strong>要使用的 TLS 协议版本</strong>、<strong>随机数</strong>、<strong>要使用的加密算法</strong>、<strong>要使用的压缩算法</strong></li>
 </ul>
 </li>
 <li>
-<p>二次握手</p>
+<p>第二次握手</p>
 <ul>
 <li>服务端发送其证书，请求获取客户端证书，然后发送 ServerHelloDone 消息</li>
 <li>客户端验证服务端证书，如果不合法，则断开 TLS 握手连接</li>
 </ul>
 </li>
 <li>
-<p>三次握手</p>
+<p>第三次握手</p>
 <p>客户端发送以下信息：</p>
 <ul>
 <li>客户端证书</li>
@@ -237,7 +240,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>此时，客户端和服务端都有了三个随机数，然后双方各自使用协商的对称加密算法和三个随机数，来生成对话密钥（MS），用于加密之后传输的数据。</p>
 </li>
 <li>
-<p>四次挥手</p>
+<p>第四次挥手</p>
 <p>客户端发送如下信息：</p>
 <ul>
 <li>编码改变通知（用于告诉服务端加密传输接下来的数据）</li>
@@ -280,7 +283,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>这一步 IE7 会进行，IE7 会到<strong>欺诈网站数据库</strong>，查询网站是否被列入了欺诈黑名单。</p>
 </li>
 </ol>
-<p>经过了以上步骤，浏览器中才会显示安全锁的标志。任意一个步骤出问题，浏览器都无法建立安全链接，并最终提示 “您的链接不是私密链接”。</p>
+<p>经过了以上步骤，浏览器中才会显示安全锁的标志。任意一个步骤出问题，浏览器都无法建立安全链接，并最终提示“您的链接不是私密链接”。</p>
 
         <h2 id="对称加密"   >
           <a href="#对称加密" class="heading-link"><i class="fas fa-link"></i></a>对称加密</h2>
@@ -295,8 +298,8 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       
 <p>上文介绍了 TLS 四次握手，我们知道在数据传输之前，需要<strong>通过协商来交换密钥、加密算法等</strong>。密钥协商阶段常用的非对称加密算法是 <span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/RSA_(algorithm)"  target="_blank" rel="noopener">RSA</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>（用于生成<strong>公钥</strong>和<strong>私钥</strong>）。其中，公钥会被包含在证书中，私钥则由客户端或服务端自己来保管。</p>
 <p>RSA 算法安全性很高，实现也简单，但缺点是需要比较大的质数（目前业界常用的是 2048 位）来保证安全强度，并且运算极其消耗 CPU 资源。</p>
-<p>一次完全的 TLS 握手中，在密钥交换阶段，非对称加密的计算量占整个握手过程的 90% 以上，而对称加密的计算量只相当于非对称加密的 0.1%。所以，如果后续的数据传输也使用非对称加密，则会极其消耗 CPU 性能，服务器根本无法承受。</p>
-<p>此外，非对称加密有一个限制：加密的内容长度不能超过公钥的长度。例如，常用的公钥长度为 2048 位，意味着加密内容不能超过 256 个字节。</p>
+<p>一次完全的 TLS 握手中，在密钥交换阶段，非对称加密的计算量占整个握手过程的 90% 以上，而对称加密的计算量只相当于非对称加密的 0.1% 左右。所以，如果后续的数据传输也使用非对称加密，则会极其消耗 CPU 性能，服务器根本无法承受。</p>
+<p>此外，非对称加密有一个限制：<strong>加密的内容长度不能超过公钥的长度</strong>。例如，常用的公钥长度为 2048 位，意味着加密内容不能超过 256 个字节。</p>
 <p>因此，非对称加密目前只适用于<strong>密钥协商</strong>或 <strong>CA 签名</strong>，不适用于传输数据的加解密，这也就是为什么不全程使用非对称加密的原因。另外，只要 TLS 握手足够安全（指的是：交换的<strong>对称密钥</strong>无法被破解、利用），那么在数据传输时，使用对称加密就足够安全。</p>
 
         <h2 id="握手恢复"   >
@@ -308,15 +311,15 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
         <h3 id="session-id"   >
           <a href="#session-id" class="heading-link"><i class="fas fa-link"></i></a>Session ID</h3>
       
-<p>Session ID 的思想很简单：每次会话都有一个会话 ID。如果 TLS 握手中断，下次重连的时候，只要客户端给出会话 ID，并且服务端有对应的记录，那么双方就可以使用之前的 “会话密钥”，而不必重新计算生成。</p>
-<p>其具体过程如下：每次会话中，服务器发送会话 ID 作为 ServerHello 消息的一部分。客户端将此会话 ID 与服务端的 IP、TCP 端口相关联，以便下次重连时简化握手。服务端将此会话 ID 与之前协商的密钥相关联，特别是 “会话密钥”。双方必须具有相同的 “会话密钥”，否则握手恢复失败（用于防止攻击者利用会话 ID）。</p>
+<p>Session ID 的思想很简单：每次会话都有一个 Session ID。如果 TLS 握手中断，下次重连的时候，只要客户端给出 Session ID，并且服务端有对应的记录，那么双方就可以使用之前的“会话密钥”，而不必重新计算生成。</p>
+<p>具体过程如下：在一次会话中，服务器发送 Session ID 作为 ServerHello 消息的一部分。客户端将此 Session ID 与服务端的 IP、TCP 端口相关联，以便下次重连时简化握手。服务端则会将此 Session ID 与之前协商的密钥相关联，特别是“会话密钥（Master-Secret）”。</p>
 
         <h3 id="session-tickets"   >
           <a href="#session-tickets" class="heading-link"><i class="fas fa-link"></i></a>Session tickets</h3>
       
-<p>Session ID 的缺点是：只能保留在一台服务器上。所以，如果客户端的请求发送到另一台服务器上（一个应用的服务器往往有很多个，因此客户端请求数据时，很可能和多个服务器交互），就无法恢复会话。Session tickets 的出现就是为了解决这个问题。</p>
-<p>Session tickets 由服务器加密和认证，服务器在使用之前会验证其有效性。</p>
-<p>使用 Session tickets 时，服务器将<strong>会话状态</strong>存储在其中，并将其存储到客户端。客户端在恢复会话时，将 Session tickets 发送给服务端，服务器验证后，使用其中的会话状态来恢复会话。</p>
+<p>Session ID 机制有一些弊端，例如：1、只能保留在一台服务器上。负载匀衡中，多台服务器之间往往没有同步 Session 信息，如果客户端的两次请求没有被同一台服务器处理，就无法通过 Session ID 恢复握手。2、服务端不好控制 Session ID 对应信息的失效时间。时间太短起不到作用，太长又占用服务器大量资源。</p>
+<p>Session tickets 的出现就是为了 Session ID 机制的一些弊端。</p>
+<p>使用 Session tickets 时，服务器将<strong>会话状态</strong>存储在其中，然后将 Session tickets 加密后存储到客户端。客户端在恢复会话时，将 Session tickets 发送给服务端，服务器验证通过后，就可以使用其中的会话状态来恢复 TLS 握手。</p>
 
         <h2 id="tls-安全性"   >
           <a href="#tls-安全性" class="heading-link"><i class="fas fa-link"></i></a>TLS 安全性</h2>
@@ -324,7 +327,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>从 TLS 的原理可知，其设计是严谨、可靠的，但是问题出现在不严谨的使用中。</p>
 <p>常见的攻击是中间人攻击（Man-in-the-middle, MITM），它是指 A 和 B 通信时，有第三者 C 处于信道中间，可以完全劫持、窃听、篡改这些信息。</p>
 <p>上文中也一直强调，不使用证书的 TLS 握手是不安全的。例如，使用密钥交换算法 <span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman"  target="_blank" rel="noopener">DH</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，该算法就没有证书的概念，这样攻击者就可以轻易窃听、篡改数据，从而冒充他人。</p>
-<p>有了证书之后，如果攻击者替换了证书，并且浏览器发出警告信息 “您的链接不是私密链接”，但是仍有用户选择继续访问，这同样使得用户数据的安全性无法保证。</p>
+<p>有了证书之后，如果攻击者替换了证书，并且浏览器发出警告信息“您的链接不是私密链接”，但是仍有用户选择继续访问，这同样使得用户数据的安全性无法保证。</p>
 <p>总结来说，包括但不限于以下两点：</p>
 <ul>
 <li>访问带证书的链接</li>
