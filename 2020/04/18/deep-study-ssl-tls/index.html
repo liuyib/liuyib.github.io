@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#54bcff"><link rel="manifest" href="/manifest.json?v=2.0.0-rc.0"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="_dxRdKposlAngL4xRoCTrJu0sZ7Pp_RhlBF9inxcD5w"><meta name="msvalidate.01" content="6A508F795A82FADAC671AFCB9848929F"><meta name="baidu-site-verification" content="UYjZUCoORR"><meta name="360-site-verification" content="b926bfcb0e6034f32ac4700700a812f5"><meta name="sogou_site_verification" content="hbRL4tRKAg"><meta name="description" content="SSL&#x2F;TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。                     HTTP 为什么不安全        HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。">
+<!DOCTYPE html><html lang="zh-CN"><head><link rel=manifest href=/manifest.json><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+  window.location.href = 'https://support.dmeng.net/upgrade-your-browser.html';
+}</script><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="/manifest.json?v=2.0.0-rc.0"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="_dxRdKposlAngL4xRoCTrJu0sZ7Pp_RhlBF9inxcD5w"><meta name="msvalidate.01" content="6A508F795A82FADAC671AFCB9848929F"><meta name="baidu-site-verification" content="UYjZUCoORR"><meta name="360-site-verification" content="b926bfcb0e6034f32ac4700700a812f5"><meta name="sogou_site_verification" content="hbRL4tRKAg"><meta name="description" content="SSL&#x2F;TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。                     HTTP 为什么不安全        HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。">
 <meta name="keywords" content="SSL&#x2F;TLS,HTTPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入探究 SSL&#x2F;TLS 协议">
@@ -6,11 +8,11 @@
 <meta property="og:site_name" content="Liuyib&#39;s Blog">
 <meta property="og:description" content="SSL&#x2F;TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。                     HTTP 为什么不安全        HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-three-handshake.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-four-handshake.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-strip-attack.png">
-<meta property="og:updated_time" content="2020-04-19T17:36:02.717Z">
+<meta property="og:updated_time" content="2020-04-20T09:02:48.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-three-handshake.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-four-handshake.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -112,7 +114,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 </blockquote>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/deep-study-ssl-tls/tls-three-handshake.png"  alt="" />
+          src="/images/loading.svg" data-src="/assets/posts/deep-study-ssl-tls/tls-four-handshake.png"  alt="" />
       </p>
 <blockquote>
 <p>图片原始来源：<span class="exturl"><a class="exturl__link"   href="https://zh.wikipedia.org/wiki/File:SSL_handshake_with_two_way_authentication_with_certificates.svg"  target="_blank" rel="noopener">Wikipedia - File:SSL handshake with two way authentication with certificates.svg</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，由我翻译并绘制为中文。</p>
@@ -773,4 +775,9 @@ if (true) {
   loadGitalk();
 } else {
   window.addEventListener('DOMContentLoaded', loadGitalk, false);
-}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script><script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1587977720680')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body></html>
