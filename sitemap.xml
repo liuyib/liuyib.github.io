@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuyib.github.io/manifest.json</loc>
+    
+    <lastmod>2020-05-17T04:22:50.343Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</loc>
     
     <lastmod>2020-04-20T09:02:48.646Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://liuyib.github.io/404.html</loc>
     
     <lastmod>2020-04-02T08:12:48.858Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuyib.github.io/manifest.json</loc>
-    
-    <lastmod>2020-02-10T11:00:56.385Z</lastmod>
     
   </url>
   
