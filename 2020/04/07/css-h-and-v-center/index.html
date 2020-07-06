@@ -7,7 +7,7 @@
 <meta property="og:description" content="CSS 实现水平垂直居中，这是一道经典的面试题，也是我们平时开发经常遇见的问题。本文总结了常用的方法，以及各种奇淫巧技，并且会注明每种方法的兼容性。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-10T14:35:25.186Z">
-<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>CSS 拷问：水平垂直居中方法你会几种？ | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>CSS 拷问：水平垂直居中方法你会几种？ | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -277,7 +277,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
           <a href="#文章小结" class="heading-link"><i class="fas fa-link"></i></a>文章小结</h2>
       
 <p>本文介绍的方法中，除了 <code>fit-content</code> 方案和 <code>Grid</code> 方案兼容性较差，其他的方案都可以在实际项目中使用。每种方案都有其应用场景，应该根据实际业务灵活运用，而不是 Flex 一把梭。</p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/">https://liuyib.github.io/2020/04/07/css-h-and-v-center/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/CSS/">CSS</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/CSS-%E5%B8%83%E5%B1%80/">CSS 布局</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/04/18/deep-study-ssl-tls/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">深入探究 SSL/TLS 协议</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/03/20/use-karma-mocha-chai-to-test/"><span class="paginator-prev__text">使用 Karma + Mocha + Chai 搭建 Web 单元测试环境</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#水平垂直居中"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/">https://liuyib.github.io/2020/04/07/css-h-and-v-center/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/CSS/">CSS</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/CSS-%E5%B8%83%E5%B1%80/">CSS 布局</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/04/18/deep-study-ssl-tls/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">深入探究 SSL/TLS 协议</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/03/20/use-karma-mocha-chai-to-test/"><span class="paginator-prev__text">使用 Karma + Mocha + Chai 搭建 Web 单元测试环境</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="disqus_thread"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#水平垂直居中"><span class="toc-number">1.</span> <span class="toc-text">
           水平垂直居中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-方案"><span class="toc-number">1.1.</span> <span class="toc-text">
           Flex 方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grid-方案"><span class="toc-number">1.2.</span> <span class="toc-text">
           Grid 方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#absolute-transform"><span class="toc-number">1.3.</span> <span class="toc-text">
@@ -612,30 +612,44 @@ if (true || false) {
   initQuicklink();
 } else {
   window.addEventListener('DOMContentLoaded', initQuicklink, false);
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
     return;
   }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = 'https://liuyib.github.io/2020/04/07/css-h-and-v-center/';
+        this.page.identifier = '2020/04/07/css-h-and-v-center/';
+        this.page.title = 'CSS 拷问：水平垂直居中方法你会几种？';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
 
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: 'f9773b8f4bf0eab8bdf7',
-    clientSecret: 'b8cf368c44428ae4d7c9d0ec634532219e8cdf67',
-    repo: 'liuyib.github.io',
-    owner: 'liuyib',
-    admin: ['liuyib'],
-    distractionFreeMode: 'true',
-    language: 'zh-CN'
-  });
-  gitalk.render('gitalk-container');
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
 }
 
 if (true) {
-  loadGitalk();
+  loadDisqus();
 } else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594029673439')
+  navigator.serviceWorker.register('/sw.js?t=1594039549407')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

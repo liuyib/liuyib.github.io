@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="Liuyib&#39;s Blog">
 <meta property="og:description" content="博客，分享，开源，心得">
 <meta property="og:locale" content="zh-CN">
-<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>标签: CSS 布局 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/tags/CSS-%E5%B8%83%E5%B1%80/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>标签: CSS 布局 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/tags/CSS-%E5%B8%83%E5%B1%80/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -372,30 +372,44 @@ if (true || false) {
   initQuicklink();
 } else {
   window.addEventListener('DOMContentLoaded', initQuicklink, false);
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
     return;
   }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = '';
+        this.page.identifier = 'tags/CSS-布局/index.html';
+        this.page.title = '';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
 
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: 'f9773b8f4bf0eab8bdf7',
-    clientSecret: 'b8cf368c44428ae4d7c9d0ec634532219e8cdf67',
-    repo: 'liuyib.github.io',
-    owner: 'liuyib',
-    admin: ['liuyib'],
-    distractionFreeMode: 'true',
-    language: 'zh-CN'
-  });
-  gitalk.render('gitalk-container');
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
 }
 
 if (true) {
-  loadGitalk();
+  loadDisqus();
 } else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594029673439')
+  navigator.serviceWorker.register('/sw.js?t=1594039549407')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

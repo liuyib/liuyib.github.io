@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-strip-attack.png">
 <meta property="og:updated_time" content="2020-06-30T14:53:58.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-four-handshake.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/deep-study-ssl-tls/tls-four-handshake.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>深入探究 SSL/TLS 协议 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -417,7 +417,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <li><span class="exturl"><a class="exturl__link"   href="https://jjayyyyyyy.github.io/2017/04/27/HSTS.html"  target="_blank" rel="noopener">HSTS 学习笔记</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 <li><span class="exturl"><a class="exturl__link"   href="https://www.barretlee.com/blog/2015/10/22/hsts-intro/#comments"  target="_blank" rel="noopener">你所不知道的 HSTS</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ul>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/">https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/SSL-TLS/">SSL/TLS</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/HTTPS/">HTTPS</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/04/07/css-h-and-v-center/"><span class="paginator-prev__text">CSS 拷问：水平垂直居中方法你会几种？</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http-为什么不安全"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/">https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/SSL-TLS/">SSL/TLS</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/HTTPS/">HTTPS</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/04/07/css-h-and-v-center/"><span class="paginator-prev__text">CSS 拷问：水平垂直居中方法你会几种？</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="disqus_thread"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http-为什么不安全"><span class="toc-number">1.</span> <span class="toc-text">
           HTTP 为什么不安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-如何保证安全"><span class="toc-number">2.</span> <span class="toc-text">
           HTTPS 如何保证安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tls-协议"><span class="toc-number">3.</span> <span class="toc-text">
           TLS 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tls-握手"><span class="toc-number">4.</span> <span class="toc-text">
@@ -751,30 +751,44 @@ if (true || false) {
   initQuicklink();
 } else {
   window.addEventListener('DOMContentLoaded', initQuicklink, false);
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
     return;
   }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = 'https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/';
+        this.page.identifier = '2020/04/18/deep-study-ssl-tls/';
+        this.page.title = '深入探究 SSL/TLS 协议';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
 
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: 'f9773b8f4bf0eab8bdf7',
-    clientSecret: 'b8cf368c44428ae4d7c9d0ec634532219e8cdf67',
-    repo: 'liuyib.github.io',
-    owner: 'liuyib',
-    admin: ['liuyib'],
-    distractionFreeMode: 'true',
-    language: 'zh-CN'
-  });
-  gitalk.render('gitalk-container');
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
 }
 
 if (true) {
-  loadGitalk();
+  loadDisqus();
 } else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594029673439')
+  navigator.serviceWorker.register('/sw.js?t=1594039549407')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

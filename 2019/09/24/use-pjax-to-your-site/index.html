@@ -7,7 +7,7 @@
 <meta property="og:description" content="一般情况下，当我们点击一个网页链接后，浏览器就会努力发送网络请求，然后将请求到的网页渲染出来。有时，我们经常会在一个网站中不停地点击链接，然后网页不停地跳转。通常，浏览器会对文件资源进行一定的缓存，这样使得同一个网站之间的页面跳转时，能够更快的加载。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-06-14T00:30:21.843Z">
-<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>集成 Pjax 实现网站无刷新加载 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:card" content="summary"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>集成 Pjax 实现网站无刷新加载 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -174,7 +174,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <li><span class="exturl"><a class="exturl__link"   href="https://www.zhihu.com/question/20289254"  target="_blank" rel="noopener">pjax 是如何工作的？</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 <li><span class="exturl"><a class="exturl__link"   href="https://paugram.com/coding/add-pjax-to-your-website.html"  target="_blank" rel="noopener">让你的网站实现 PJAX 无刷新</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ul>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/">https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Pjax/">Pjax</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/">局部刷新</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/03/20/use-karma-mocha-chai-to-test/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">使用 Karma + Mocha + Chai 搭建 Web 单元测试环境</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/08/20/develop-hexo-theme-from-0-to-1/"><span class="paginator-prev__text">从 0 到 1 开发 Hexo 主题杂谈</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pjax-原理"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/">https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Pjax/">Pjax</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/">局部刷新</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/03/20/use-karma-mocha-chai-to-test/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">使用 Karma + Mocha + Chai 搭建 Web 单元测试环境</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/08/20/develop-hexo-theme-from-0-to-1/"><span class="paginator-prev__text">从 0 到 1 开发 Hexo 主题杂谈</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="disqus_thread"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pjax-原理"><span class="toc-number">1.</span> <span class="toc-text">
           Pjax 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始使用"><span class="toc-number">2.</span> <span class="toc-text">
           开始使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引用文件"><span class="toc-number">2.1.</span> <span class="toc-text">
           引用文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析页面"><span class="toc-number">2.2.</span> <span class="toc-text">
@@ -499,30 +499,44 @@ if (true || false) {
   initQuicklink();
 } else {
   window.addEventListener('DOMContentLoaded', initQuicklink, false);
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
     return;
   }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = 'https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/';
+        this.page.identifier = '2019/09/24/use-pjax-to-your-site/';
+        this.page.title = '集成 Pjax 实现网站无刷新加载';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
 
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: 'f9773b8f4bf0eab8bdf7',
-    clientSecret: 'b8cf368c44428ae4d7c9d0ec634532219e8cdf67',
-    repo: 'liuyib.github.io',
-    owner: 'liuyib',
-    admin: ['liuyib'],
-    distractionFreeMode: 'true',
-    language: 'zh-CN'
-  });
-  gitalk.render('gitalk-container');
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
 }
 
 if (true) {
-  loadGitalk();
+  loadDisqus();
 } else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594029673439')
+  navigator.serviceWorker.register('/sw.js?t=1594039549407')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

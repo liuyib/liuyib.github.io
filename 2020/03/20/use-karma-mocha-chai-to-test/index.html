@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://img.shields.io/codecov/c/github/liuyib/karma-mocha-demo.svg">
 <meta property="og:updated_time" content="2020-04-18T12:24:55.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/use-karma-mocha-chai-to-test/karma-init.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>使用 Karma + Mocha + Chai 搭建 Web 单元测试环境 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/use-karma-mocha-chai-to-test/karma-init.png"><meta name="keywords" content="liuyib, Liuyib's Blog"><meta name="description" content="博客，分享，开源，心得"><title>使用 Karma + Mocha + Chai 搭建 Web 单元测试环境 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -418,7 +418,7 @@ liuyib/karma-mocha-demo</a>。如果某些修改的地方不太清楚，可以�
 <li><span class="exturl"><a class="exturl__link"   href="https://www.ibm.com/developerworks/cn/web/wa-lo-use-karma-jasmine-build-test-environment/index.html"  target="_blank" rel="noopener">使用 Karma + Jasmine 构建 Web 测试环境</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 <li><span class="exturl"><a class="exturl__link"   href="https://benlimmer.com/2019/01/14/travis-ci-xvfb/"  target="_blank" rel="noopener">Travis CI XVFB Breaking Change</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ul>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/">https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Karma/">Karma</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Mocha/">Mocha</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Chai/">Chai</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/04/07/css-h-and-v-center/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">CSS 拷问：水平垂直居中方法你会几种？</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/09/24/use-pjax-to-your-site/"><span class="paginator-prev__text">集成 Pjax 实现网站无刷新加载</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用场景"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/">https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Karma/">Karma</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Mocha/">Mocha</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Chai/">Chai</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/04/07/css-h-and-v-center/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">CSS 拷问：水平垂直居中方法你会几种？</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/09/24/use-pjax-to-your-site/"><span class="paginator-prev__text">集成 Pjax 实现网站无刷新加载</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="disqus_thread"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用场景"><span class="toc-number">1.</span> <span class="toc-text">
           适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么不用-jest"><span class="toc-number">2.</span> <span class="toc-text">
           为什么不用 Jest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#认识-karma"><span class="toc-number">3.</span> <span class="toc-text">
           认识 Karma</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-karma"><span class="toc-number">4.</span> <span class="toc-text">
@@ -752,30 +752,44 @@ if (true || false) {
   initQuicklink();
 } else {
   window.addEventListener('DOMContentLoaded', initQuicklink, false);
-}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
     return;
   }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = 'https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/';
+        this.page.identifier = '2020/03/20/use-karma-mocha-chai-to-test/';
+        this.page.title = '使用 Karma + Mocha + Chai 搭建 Web 单元测试环境';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
 
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: 'f9773b8f4bf0eab8bdf7',
-    clientSecret: 'b8cf368c44428ae4d7c9d0ec634532219e8cdf67',
-    repo: 'liuyib.github.io',
-    owner: 'liuyib',
-    admin: ['liuyib'],
-    distractionFreeMode: 'true',
-    language: 'zh-CN'
-  });
-  gitalk.render('gitalk-container');
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
 }
 
 if (true) {
-  loadGitalk();
+  loadDisqus();
 } else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594029673439')
+  navigator.serviceWorker.register('/sw.js?t=1594039549407')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
