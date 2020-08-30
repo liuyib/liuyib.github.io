@@ -301,9 +301,11 @@ template {
   --color-gray-150: #f9f9f9;
   --color-gray-200: #f5f6f7;
   --color-gray-250: #efefef;
+  --color-gray-260: #e5e7ea;
   --color-gray-300: #dadada;
   --color-gray-400: #ccd0d5;
   --color-gray-500: #bec3c9;
+  --color-gray-550: #adadad;
   --color-gray-600: #8d949e;
   --color-gray-650: #757474;
   --color-gray-700: #606770;
@@ -320,9 +322,11 @@ html.nightmode {
   --color-gray-150: #2c323c;
   --color-gray-200: #303846;
   --color-gray-250: #444950;
+  --color-gray-260: #555b64;
   --color-gray-300: #606770;
   --color-gray-400: #757474;
   --color-gray-500: #8d949e;
+  --color-gray-550: #959595;
   --color-gray-600: #bec3c9;
   --color-gray-650: #ccd0d5;
   --color-gray-700: #dadada;
@@ -667,6 +671,10 @@ kbd {
 .content-wrap {
   width: calc(100% - 310px);
   float: right;
+}
+.content-wrap--noside {
+  float: none;
+  margin: 0 auto;
 }
 .content {
   width: 100%;
@@ -2069,7 +2077,7 @@ kbd {
 }
 .highlight figcaption span:first-child::before {
   margin: 0 0.6rem 0 0;
-  color: var(--color-gray-600);
+  color: var(--color-gray-550);
 }
 .highlight.markdown figcaption span:first-child::before {
   content: 'markdown';
@@ -2205,11 +2213,11 @@ kbd {
 }
 .highlight {
   margin: 0 0 1rem;
+  border-radius: 0.25rem;
   width: 100%;
   line-height: 1.7;
-  color: var(--color-gray-800);
+  color: var(--color-gray-850);
   background-color: var(--color-gray-200);
-  border-radius: 0.25rem;
 }
 .highlight pre,
 .highlight code {
@@ -2224,7 +2232,7 @@ kbd {
 .highlight figcaption {
   position: relative;
   width: 100%;
-  color: var(--color-gray-600);
+  color: var(--color-gray-850);
   background-color: var(--color-gray-200);
   zoom: 1;
   border-top-left-radius: 0.25rem;
@@ -2241,7 +2249,7 @@ kbd {
 .highlight figcaption span:first-child {
   float: left;
   margin-left: 0.5rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-850);
 }
 .highlight figcaption span.external-link {
   float: right;
@@ -2259,7 +2267,7 @@ kbd {
 .highlight figcaption.custom .custom-lang {
   float: left;
   margin: 0 0.6rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-550);
 }
 .highlight figcaption.custom .custom-carbon {
   display: -webkit-box;
@@ -2294,29 +2302,30 @@ kbd {
   background-color: #27c93f;
 }
 .highlight figcaption:not(.custom) {
-  background-color: var(--color-gray-250);
+  background-color: var(--color-gray-200);
 }
 .highlight figcaption:not(.custom) + .table-container td.gutter,
 .highlight figcaption:not(.custom) + table td.gutter {
   display: table-cell;
 }
 .highlight td.gutter {
+  border-right: 1px solid var(--color-gray-300);
   padding: 0.4rem 0.6rem;
   width: 2rem;
-  background-color: var(--color-gray-250);
+  background-color: var(--color-gray-200);
   display: none;
 }
 .highlight td.gutter pre {
   text-align: right;
   white-space: nowrap;
-  color: var(--color-gray-600);
+  color: var(--color-gray-550);
   background-color: inherit;
 }
 .highlight td.code {
   padding: 0.5rem 0.75rem;
 }
 .highlight .marked {
-  background-color: var(--color-gray-300);
+  background-color: var(--color-gray-260);
 }
 .highlight .emphasis {
   font-style: italic;
@@ -2329,7 +2338,7 @@ kbd {
 }
 .highlight .quote,
 .highlight .params {
-  color: var(--color-gray-800);
+  color: var(--color-gray-850);
 }
 .highlight .selector-tag,
 .highlight .template-variable,
@@ -2396,7 +2405,7 @@ kbd {
 .scss .variable,
 .styl .variable,
 .stylus .variable {
-  color: var(--color-gray-800);
+  color: var(--color-gray-850);
 }
 .html .meta,
 .xml .meta,
@@ -2607,6 +2616,7 @@ kbd {
 .zoomimg-clone {
   position: absolute;
   z-index: 2;
+  background-color: #fff;
   cursor: zoom-out;
   will-change: transform;
 }
@@ -2784,7 +2794,7 @@ kbd {
   cursor: pointer;
 }
 .copy-button i {
-  color: var(--color-gray-600);
+  color: var(--color-gray-550);
 }
 .sticky-top {
   position: absolute;
@@ -2822,58 +2832,38 @@ kbd {
 }
 .paginator-inner {
   border-radius: 5px;
-  padding: 0.8em 0;
+  padding: 12px 0;
   background-color: var(--color-gray-150);
 }
-.paginator .space,
-.paginator .page-number {
+.paginator .page-number,
+.paginator .prev,
+.paginator .next {
   display: inline-block;
-  border-radius: 3px;
-  width: 1rem;
-  height: 1rem;
-  line-height: 1rem;
-  vertical-align: middle;
-}
-.paginator .page-number {
   margin: 0 0.5em;
-  color: #49b1f5;
-  -webkit-transition: color 0.2s ease, background-color 0.2s ease;
-  -moz-transition: color 0.2s ease, background-color 0.2s ease;
-  -o-transition: color 0.2s ease, background-color 0.2s ease;
-  -ms-transition: color 0.2s ease, background-color 0.2s ease;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-transition: border 0.2s ease;
+  -moz-transition: border 0.2s ease;
+  -o-transition: border 0.2s ease;
+  -ms-transition: border 0.2s ease;
+  transition: border 0.2s ease;
 }
-.paginator .page-number:hover {
-  color: #f4f5f5;
-  background-color: #49b1f5;
+.paginator .page-number:hover,
+.paginator .prev:hover,
+.paginator .next:hover {
+  border-color: var(--color-gray-260);
 }
 .paginator .current {
   color: #f4f5f5;
   background-color: #49b1f5;
 }
-.paginator a.prev,
-.paginator a.next {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  line-height: 1rem;
-  vertical-align: middle;
-  color: #49b1f5;
-  -webkit-transition: color 0.2s ease;
-  -moz-transition: color 0.2s ease;
-  -o-transition: color 0.2s ease;
-  -ms-transition: color 0.2s ease;
-  transition: color 0.2s ease;
-}
-.paginator a.prev:hover,
-.paginator a.next:hover {
-  color: #fc6423;
-}
-.paginator a.prev {
-  margin-right: 0.2em;
-}
-.paginator a.next {
-  margin-left: 0.2em;
+.paginator .current:hover {
+  border-color: transparent;
 }
 .paginator-prev,
 .paginator-next {
