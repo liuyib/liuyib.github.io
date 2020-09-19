@@ -24,6 +24,8 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
+  precacheUrls.push('/2020/09/19/add-commits-to-others-pr/');
+
   precacheUrls.push('/2020/04/18/deep-study-ssl-tls/');
 
   precacheUrls.push('/2020/04/07/css-h-and-v-center/');
@@ -31,8 +33,6 @@ var precacheUrls = [];
   precacheUrls.push('/2020/03/20/use-karma-mocha-chai-to-test/');
 
   precacheUrls.push('/2019/09/24/use-pjax-to-your-site/');
-
-  precacheUrls.push('/2019/08/20/develop-hexo-theme-from-0-to-1/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
