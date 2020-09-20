@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2020-09-19T15:19:24.374Z</updated>
+  <updated>2020-09-20T16:16:33.900Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/"/>
     <id>https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/</id>
     <published>2020-09-19T09:14:08.000Z</published>
-    <updated>2020-09-19T15:19:24.374Z</updated>
+    <updated>2020-09-20T16:16:33.900Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;2019 年，我在 Github 上开源了自己的第一个开源项目 &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/hexo-theme-stun&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;hexo-theme-stun&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;。它是一个基于 Hexo 博客框架的主题，虽然没有很出众，但是我在一直维护。值得庆幸的是，有许多 Github 用户为这个项目贡献了 Pull Request。&lt;/p&gt;
+      &lt;p&gt;2019 年，我在 Github 上开源了自己的第一个开源项目 &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/hexo-theme-stun&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;hexo-theme-stun&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。&lt;/p&gt;
     
     </summary>
     
@@ -35,6 +35,8 @@
       <category term="Github" scheme="https://liuyib.github.io/tags/Github/"/>
     
       <category term="Git" scheme="https://liuyib.github.io/tags/Git/"/>
+    
+      <category term="Pull Request" scheme="https://liuyib.github.io/tags/Pull-Request/"/>
     
   </entry>
   
