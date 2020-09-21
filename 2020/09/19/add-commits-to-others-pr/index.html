@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://liuyib.github.io/assets/banner/add-commits-to-others-pr/vscode-built-in-git-ui-add-commit.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/banner/add-commits-to-others-pr/vscode-plugins-gitlens-push.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/banner/add-commits-to-others-pr/github-pr-files-changed-edit-file.png">
-<meta property="og:updated_time" content="2020-09-20T16:16:33.900Z">
+<meta property="og:updated_time" content="2020-09-21T02:03:25.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liuyib.github.io/assets/banner/add-commits-to-others-pr/pr-meta-info-branch.png"><title>优雅的修改他人贡献的 Pull Request | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
@@ -109,7 +109,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       
 <p>在本地进行你想要的修改，提交 Commit 后，推送到贡献者 Fork 的仓库：</p>
 <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"Fix the wrong spelling of the word"</span></span><br><span class="line">$ git push EvanOne0616 HEAD:patch-1</span><br></pre></td></tr></table></div></figure>
-<p>最后，如果一些顺利，你的 Commit 将出现在 Pull Request 的后面：</p>
+<p>最后，如果一切顺利，你的 Commit 就自动同步到了 Pull Request 的后面：</p>
 <p>
         <img   class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="/assets/banner/add-commits-to-others-pr/add-commit-to-others-pr.png"  alt="Modify Others PR" />
@@ -179,22 +179,29 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
         <img   class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="/assets/banner/add-commits-to-others-pr/vscode-plugins-gitlens-switch-branch-to-others.png"  alt="VSCode Plugins GitLens -- Switch Branch" />
       </p>
-<p>此时，如果没有意外的话，Pull Request 中的代码就被拉取到了本地。接着你根据之前的想法，做一些修改，提交并推送到远程，就实现了对 Pull Request 的修改。</p>
-<p>这里值得一提的是，GitLens 插件的功能如此强大，竟然不支持 <code>git commit</code> 的图形化操作。。。具体原因见：<span class="exturl"><a class="exturl__link"   href="https://github.com/eamodio/vscode-gitlens/issues/375"  target="_blank" rel="noopener">How to commit?</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，其中 GitLens 的维护人员提到：由于 VS Code 内置了 <code>git commit</code> 的图形化操作，因此 GitLens 不打算对其进行支持。</p>
-<p>提交 Commit 并推送到远程的图形化操作如下：</p>
+<p>此时，如果没有意外的话，Pull Request 中的代码就被拉取到了本地。</p>
+
+    <div class="note-plugin default">
+      <span class="note-plugin__icon note-plugin__icon--default">
+              <i class="fas fa-arrow-circle-right"></i>
+            </span>
+      <p>这里值得一提的是，GitLens 插件的功能如此强大，竟然不支持 <code>git commit</code> 的图形化操作。。。具体原因见：<span class="exturl"><a class="exturl__link"   href="https://github.com/eamodio/vscode-gitlens/issues/375"  target="_blank" rel="noopener">How to commit?</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，其中 GitLens 的维护人员提到：由于 VS Code 内置了 <code>git commit</code> 的图形化操作，因此 GitLens 不打算对其进行支持。</p>
+    </div>
+  
+<p>接着，根据你自己的想法，在本地修改拉取的 Pull Request，然后提交 Commit 信息：</p>
 <blockquote>
-<p>注意：此处是用的 VS Code 内置的【源代码管理】功能，不是 GitLens。</p>
+<p>注意：下图是用的 VS Code 内置的【源代码管理】功能，不是 GitLens。</p>
 </blockquote>
 <p>
         <img   class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="/assets/banner/add-commits-to-others-pr/vscode-built-in-git-ui-add-commit.png"  alt="VSCode Plugins GitLens -- Git Add / Commit" />
       </p>
-<p>最后，在 GitLens 中，点击 <code>↑</code>（Push Repositories） -&gt; <code>Push</code>：</p>
+<p>最后，将你的 Commit 推送到贡献者 Fork 的仓库。在 GitLens 中，点击 <code>↑</code>（Push Repositories） -&gt; <code>Push</code>：</p>
 <p>
         <img   class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="/assets/banner/add-commits-to-others-pr/vscode-plugins-gitlens-push.png"  alt="VSCode Plugins GitLens -- Git Push" />
       </p>
-<p>到这里，不出意外的话，你的 Commit 就追加到了别人贡献的 Pull Request 后面 🎉。</p>
+<p>到这里，不出意外的话，你的 Commit 就自动同步到了 Pull Request 的后面 🎉。</p>
 
         <h3 id="web-端方式"   >
           <a href="#web-端方式" class="heading-link"><i class="fas fa-link"></i></a>Web 端方式</h3>
@@ -205,7 +212,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
           src="/images/loading.svg" data-src="/assets/banner/add-commits-to-others-pr/github-pr-files-changed-edit-file.png"  alt="Github PR -- Edit File" />
       </p>
 
-    <div class="note-plugin tips">
+    <div class="note-plugin default">
       <span class="note-plugin__icon note-plugin__icon--default">
               <i class="fas fa-arrow-circle-right"></i>
             </span>
@@ -598,7 +605,7 @@ if (true) {
 } else {
   window.addEventListener('DOMContentLoaded', loadDisqus, false);
 }</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script><script type="application/json" src="/search.json"></script><script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1600618612759')
+  navigator.serviceWorker.register('/sw.js?t=1600653816577')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
