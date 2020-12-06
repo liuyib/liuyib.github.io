@@ -8,14 +8,14 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/pr-meta-info-branch.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/add-commit-to-others-pr.png">
-<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-built-in-git-ui.png">
-<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-add-remote.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-add-remote.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-fetch-others.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-switch-branch-to-others.png">
-<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-built-in-git-ui-add-commit.png">
-<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-push.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-add-commit.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-push.png">
 <meta property="og:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/github-pr-files-changed-edit-file.png">
-<meta property="og:updated_time" content="2020-11-13T08:15:47.378Z">
+<meta property="og:updated_time" content="2020-12-06T12:56:57.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liuyib.github.io/assets/posts/add-commits-to-others-pr/pr-meta-info-branch.png"><title>优雅地修改他人贡献的 Pull Request | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
@@ -66,7 +66,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-flask"></i></span><span class="header-nav-menu-item__text">实验室</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener"><span class="header-nav-submenu-item__text">🦄 Stun</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-fingerprint"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/reprint/"><span class="header-nav-submenu-item__icon"><i class="fas fa-reply"></i></span><span class="header-nav-submenu-item__text">转载</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">其他</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">相册</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-hand-spock"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(/assets/banner/add-commits-to-others-pr.png) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Liuyib's Blog</div><div class="header-banner-info__subtitle">write code and love life</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">优雅地修改他人贡献的 Pull Request</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-09-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-13</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">14分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>2019 年，我在 Github 上开源了自己的第一个开源项目 <span class="exturl"><a class="exturl__link"   href="https://github.com/liuyib/hexo-theme-stun"  target="_blank" rel="noopener">hexo-theme-stun</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。</p>
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-flask"></i></span><span class="header-nav-menu-item__text">实验室</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener"><span class="header-nav-submenu-item__text">🦄 Stun</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-fingerprint"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/reprint/"><span class="header-nav-submenu-item__icon"><i class="fas fa-reply"></i></span><span class="header-nav-submenu-item__text">转载</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">其他</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">相册</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-hand-spock"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(/assets/banner/add-commits-to-others-pr.png) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Liuyib's Blog</div><div class="header-banner-info__subtitle">write code and love life</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">优雅地修改他人贡献的 Pull Request</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-09-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-06</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">13分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>2019 年，我在 Github 上开源了自己的第一个开源项目 <span class="exturl"><a class="exturl__link"   href="https://github.com/liuyib/hexo-theme-stun"  target="_blank" rel="noopener">hexo-theme-stun</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。</p>
 <a id="more"></a>
 <p>有时，他人提出的 Pull Request 并不能直接被接纳，往往需要一些小的调整：修改错别字、调整代码逻辑、完善文档等等。最直接的，我们可以通过评论，要求贡献者修改。但沟通是有成本的，而且不够及时。</p>
 <p>有没有更便捷的方法？直接将自己的 Commit 追加到某个 Pull Request 中？答案是肯定的。</p>
@@ -99,14 +99,14 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>你需要确认一下，贡献者提出 Pull Request 时所用的分支（如果你不确定他们使用的哪个分支，请看 Pull Request 顶部的信息）：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/pr-meta-info-branch.png"  alt="PR Meta Info" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/pr-meta-info-branch.png"  alt="Pull Request Meta Info" />
       </p>
 
     <div class="note-plugin warning">
       <span class="note-plugin__icon note-plugin__icon--warning">
               <i class="fas fa-exclamation-circle"></i>
             </span>
-      <p>有可能你会看到，贡献者提出 Pull Request 时所用的分支显示为 <code>unknown repository</code>，这是因为在你还未合并 PR 之前，该贡献者就把 Fork 的仓库删除了。此时，你只能选择直接合并 PR（任何人都无法再修改此 PR），或者你可以要求贡献者重新发起一个 PR，并告诉他没有合并之前不要删除 Fork 仓库。</p>
+      <p>有可能你会看到，贡献者提出 Pull Request 时所用的分支显示为 <code>unknown repository</code>，这是因为在你还未合并 Pull Request 之前，该贡献者就把 Fork 的仓库删除了。此时，你只能选择直接合并 Pull Request（任何人都无法再修改此 Pull Request），或者你可以要求贡献者重新发起一个 Pull Request，并告诉他没有合并之前不要删除 Fork 仓库。</p>
     </div>
   
 <p>在本地，给该分支起一个不重复的名字，例如 <code>EvanOne0616-patch</code>，然后切换到贡献者提出 Pull Request 所用的分支：</p>
@@ -120,7 +120,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>最后，如果一切顺利，你的 Commit 就自动同步到了 Pull Request 的后面：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/add-commit-to-others-pr.png"  alt="Modify Others PR" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/add-commit-to-others-pr.png"  alt="Modify Others Pull Request" />
       </p>
 
         <h2 id="总结上文"   >
@@ -137,7 +137,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
           <a href="#命令行方式" class="heading-link"><i class="fas fa-link"></i></a>命令行方式</h3>
       
 <p>与上文的操作类似，有另一组指令操作也可以实现同样的效果：</p>
-<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆自己的仓库</span></span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:liuyib/trial-test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取 PR（其中 patch-1 为贡献者提出 PR 所用的分支名，411 是 PR 的 ID）</span></span><br><span class="line">$ git pull origin pull/411/head:patch-1</span><br><span class="line"><span class="comment"># 切换到贡献者提出 Pull Request 所用的分支</span></span><br><span class="line">$ git checkout patch-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 你在本地修改代码，然后提交</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"Add some changes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将贡献者 Fork 的仓库地址，添加为新的远程仓库</span></span><br><span class="line">$ git remote add EvanOne0616 https://github.com/EvanOne0616/trial-test.git</span><br><span class="line"><span class="comment"># 将你的 Commit 提交到贡献者 Fork 的仓库</span></span><br><span class="line">$ git push EvanOne0616 patch-1</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆自己的仓库</span></span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:liuyib/trial-test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取 Pull Request（其中 patch-1 为贡献者提出 Pull Request 所用的分支名，411 是 Pull Request 的 ID）</span></span><br><span class="line">$ git pull origin pull/411/head:patch-1</span><br><span class="line"><span class="comment"># 切换到贡献者提出 Pull Request 所用的分支</span></span><br><span class="line">$ git checkout patch-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 你在本地修改代码，然后提交</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"Add some changes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将贡献者 Fork 的仓库地址，添加为新的远程仓库</span></span><br><span class="line">$ git remote add EvanOne0616 https://github.com/EvanOne0616/trial-test.git</span><br><span class="line"><span class="comment"># 将你的 Commit 提交到贡献者 Fork 的仓库</span></span><br><span class="line">$ git push EvanOne0616 patch-1</span><br></pre></td></tr></table></div></figure>
 
         <h3 id="图形化方式"   >
           <a href="#图形化方式" class="heading-link"><i class="fas fa-link"></i></a>图形化方式</h3>
@@ -149,32 +149,30 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
       <p>由于我使用的编辑器是 VS Code，所以对于使用其他编辑器的开发者，下文仅部分有用。</p>
     </div>
   
-<p>对于图形化 Git 操作，VS Code 已经内置了该功能，在侧边活动栏中可以找到：</p>
+<p>对于图形化 Git 操作，VS Code 已经内置了该功能，在侧边栏中可以找到：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-built-in-git-ui.png"  alt="VSCode built-in Git UI" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui.png"  alt="VSCode built-in Git GUI" />
       </p>
 
     <div class="note-plugin success">
       <span class="note-plugin__icon note-plugin__icon--success">
               <i class="fas fa-check-circle"></i>
             </span>
-      <p>如果你在 VS Code 的侧边活动栏中，找不到该功能的图标，那么它可能被隐藏了。有两种方式将其显示：1. 在侧边活动栏上，单击鼠标右键，然后勾选【源代码管理】。2. 使用快捷键 <kbd>Ctrl + Shift + G</kbd> <kbd>G</kbd>（该快捷键的使用方法：先按下组合键 <kbd>Ctrl + Shift + G</kbd>，松开所有按键后，再按下 <kbd>G</kbd>）</p>
+      <p>如果你在 VS Code 的侧边栏中，找不到该功能的图标，那么它可能被隐藏了。有两种方式将其显示：1. 在侧边栏上，单击鼠标右键，然后勾选【源代码管理】。2. 使用快捷键 <kbd>Ctrl + Shift + G</kbd> <kbd>G</kbd>（该快捷键的使用方法：先按下组合键 <kbd>Ctrl + Shift + G</kbd>，松开所有按键后，再按下 <kbd>G</kbd>）</p>
     </div>
   
-<p>VS Code 虽然内置了【源代码管理】功能，但是不够强大，因此我们需要安装 <span class="exturl"><a class="exturl__link"   href="https://github.com/eamodio/vscode-gitlens"  target="_blank" rel="noopener">GitLens</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 插件，两者配合使用。安装 GitLens 之后，在 VS Code 的侧边活动栏中，会新添一个图标，直接点击该图标就可以使用 GitLens 了。</p>
+<p>VS Code 虽然内置了源代码管理功能，但是不够强大，因此我们需要安装 <span class="exturl"><a class="exturl__link"   href="https://github.com/eamodio/vscode-gitlens"  target="_blank" rel="noopener">GitLens</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 插件，两者配合使用。安装 GitLens 之后，在 VS Code 的侧边栏中，会新添一个图标，直接点击该图标就可以使用 GitLens 了。</p>
 <p>接下来进入正文：“如何通过图形化界面，来修改他人贡献的 Pull Request”。</p>
-<p><strong>1 ) 克隆项目</strong></p>
-<p>将你的项目克隆下来，使用 VS Code 打开，然后点击侧边活动栏的 GitLens 的图标。</p>
-<p><strong>2 ) 添加远程仓库</strong></p>
-<p>点击 Remotes 右面的 <code>＋</code>（Add Remote）：</p>
+<p><strong>1 ) 添加远程仓库</strong></p>
+<p>用 VSCode 打开你的项目后，点击侧边栏的【源代码管理】，然后在【源代码管理存储库】中，找到需要处理 Pull Request 的项目。接着点击右面的 【<code>...</code>】 -&gt; 【远程】 -&gt; 【添加远程存储库】：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-add-remote.png"  alt="VSCode Plugins GitLens -- Add Remote" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-add-remote.png"  alt="VSCode built-in Git GUI -- Add Remote" />
       </p>
-<p>在弹出的输入框中，输入<strong>远程仓库的名字</strong>（该名字只是一种标识，方便你区分就好，我习惯使用贡献者的 Github 用户名来充当），按下 Enter 确认后，再输入<strong>远程仓库的 URL</strong>（该 URL 有两种方式获取：1. 访问贡献者的仓库列表，找到 Fork 的仓库，复制其 URL。2. 在 Pull Request 最底部，找到 <code>command line instructions</code>，点击之后可以看到该 URL）。这样就把贡献者 Fork 的仓库地址，添加到你本地项目的远程仓库列表中了。</p>
-<p><strong>3 ) 拉取 PR 中的代码</strong></p>
-<p>在新添加的 Remote 上单击鼠标右键 -&gt; 点击 Fetch：</p>
+<p>在弹出的输入框中，输入<strong>远程仓库的 URL</strong>，回车确认后，再输入<strong>远程仓库的名称</strong>（该名称只是一种标识，方便你区分就好，我习惯使用贡献者的 Github 用户名来充当），按下回车确认后，就把贡献者 Fork 的仓库地址，添加到你本地项目的远程仓库列表中了。</p>
+<p><strong>2 ) 拉取 Pull Request 中的代码</strong></p>
+<p>在侧边栏的【GitLens】中，点击新添加的远程仓库上的 Fetch 按钮：</p>
 <p>
         <img   class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-fetch-others.png"  alt="VSCode Plugins GitLens -- Fetch Others" />
@@ -188,27 +186,16 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
           src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-switch-branch-to-others.png"  alt="VSCode Plugins GitLens -- Switch Branch" />
       </p>
 <p>然后在弹出的对话框中，输入一个本地不存在的分支名（例如 <code>patch-1</code>），最后确认。此时，如果没有意外的话，Pull Request 中的代码就被拉取到了本地。</p>
-
-    <div class="note-plugin default">
-      <span class="note-plugin__icon note-plugin__icon--default">
-              <i class="fas fa-arrow-circle-right"></i>
-            </span>
-      <p>这里值得一提的是，GitLens 插件的功能如此强大，竟然不支持 <code>git commit</code> 的图形化操作。。。具体原因见：<span class="exturl"><a class="exturl__link"   href="https://github.com/eamodio/vscode-gitlens/issues/375"  target="_blank" rel="noopener">How to commit?</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，其中 GitLens 的维护人员提到：由于 VS Code 内置了 <code>git commit</code> 的图形化操作，因此 GitLens 不打算对其进行支持。</p>
-    </div>
-  
-<p><strong>4 ) 修改 PR 并提交</strong></p>
-<p>接下来，根据你自己的想法，在本地修改拉取的 Pull Request 并提交 Commit 信息：</p>
-<blockquote>
-<p>注意：下图是用的 VS Code 内置的【源代码管理】功能，不是 GitLens。</p>
-</blockquote>
+<p><strong>3 ) 修改 Pull Request 并提交</strong></p>
+<p>接下来，根据你自己的想法，在本地修改项目。然后在侧边栏的【源代码管理】中，提交 Commit 信息：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-built-in-git-ui-add-commit.png"  alt="VSCode Plugins GitLens -- Git Add / Commit" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-add-commit.png"  alt="VSCode Plugins GitLens -- Git Add / Commit" />
       </p>
-<p>最后，将你的 Commit 推送到贡献者 Fork 的仓库。在 GitLens 中，找到新建的分支（例如 <code>patch-1</code>），点击该分支上的 <code>↑</code>（Push）-&gt; <code>Push</code>：</p>
+<p>最后，将你的 Commit 推送到贡献者 Fork 的仓库。</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-plugins-gitlens-push.png"  alt="VSCode Plugins GitLens -- Git Push" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/vscode-builtin-gitgui-push.png"  alt="VSCode built-in Git GUI -- Git Push" />
       </p>
 <p>如果不出意外的话，你的 Commit 就自动同步到了 Pull Request 的后面 🎉。</p>
 
@@ -218,7 +205,7 @@ window.CONFIG = CONFIG;</script></head><body><div class="container" id="containe
 <p>还有一种简单的方式，直接在 Github 中在线修改 Pull Request：</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/github-pr-files-changed-edit-file.png"  alt="Github PR -- Edit File" />
+          src="/images/loading.svg" data-src="/assets/posts/add-commits-to-others-pr/github-pr-files-changed-edit-file.png"  alt="Github Pull Request -- Edit File" />
       </p>
 
     <div class="note-plugin default">
