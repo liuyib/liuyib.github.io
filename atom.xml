@@ -41,6 +41,31 @@
   </entry>
   
   <entry>
+    <title>Github Discussions for «Stun»</title>
+    <link href="https://liuyib.github.io/2020/07/06/theme-stun-discussions/"/>
+    <id>https://liuyib.github.io/2020/07/06/theme-stun-discussions/</id>
+    <published>2020-07-06T12:47:40.615Z</published>
+    <updated>2020-12-20T08:48:10.042Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+    &lt;div class=&quot;note-plugin success&quot;&gt;
+      &lt;span class=&quot;note-plugin__icon note-plugin__icon--success&quot;&gt;
+              &lt;i class=&quot;fas
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>深入探究 SSL/TLS 协议</title>
     <link href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"/>
     <id>https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</id>
@@ -156,28 +181,6 @@
     
     
       <category term="Hexo" scheme="https://liuyib.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>theme-stun-gitter</title>
-    <link href="https://liuyib.github.io/2019/07/26/theme-stun-gitter/"/>
-    <id>https://liuyib.github.io/2019/07/26/theme-stun-gitter/</id>
-    <published>2019-07-26T01:38:55.000Z</published>
-    <updated>2020-07-06T12:47:40.615Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;This is a link for Gitter of theme-stun. Clicking on the title to
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
