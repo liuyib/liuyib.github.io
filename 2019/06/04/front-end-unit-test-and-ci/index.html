@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/icons/icon-16x16.png?v=2.4.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/icons/icon-32x32.png?v=2.4.0" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=2.4.0" sizes="180x180"><link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg?v=2.4.0" color="#54bcff"><meta name="msapplication-TileImage" content="/assets/icons/icon-144x144.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="_dxRdKposlAngL4xRoCTrJu0sZ7Pp_RhlBF9inxcD5w"><meta name="msvalidate.01" content="6A508F795A82FADAC671AFCB9848929F"><meta name="baidu-site-verification" content="UYjZUCoORR"><meta name="360-site-verification" content="b926bfcb0e6034f32ac4700700a812f5"><meta name="sogou_site_verification" content="hbRL4tRKAg"><meta name="description" content="前端的单元测试包括但不限于：单元功能测试、UI 测试、兼容性测试等等。一个测试体系大体包括四部分：  测试运行器（e.g. Karma） 测试框架（e.g. Mocha, Jest, Jasmine, Qunit） 断言库（e.g. Should, Chai） 测试覆盖率（e.g. Istanbul）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端单元测试和持续集成">
+<meta property="og:url" content="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/">
+<meta property="og:site_name" content="Liuyib&#39;s Blog">
+<meta property="og:description" content="前端的单元测试包括但不限于：单元功能测试、UI 测试、兼容性测试等等。一个测试体系大体包括四部分：  测试运行器（e.g. Karma） 测试框架（e.g. Mocha, Jest, Jasmine, Qunit） 断言库（e.g. Should, Chai） 测试覆盖率（e.g. Istanbul）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/run-main-file-in-node.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/mocha-test-one-case.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/mocha-test-some-case-1.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/mocha-test-some-case-2.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/code-coverage-in-cli-1.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/code-coverage-in-browser.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/code-coverage-in-cli-2.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/travis-ci-settings.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/travis-badge.png">
+<meta property="og:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/codecov-badge.png">
+<meta property="article:published_time" content="2019-06-04T22:54:49.000Z">
+<meta property="article:modified_time" content="2020-12-24T09:13:01.842Z">
+<meta property="article:author" content="liuyib">
+<meta property="article:tag" content="单元测试">
+<meta property="article:tag" content="持续集成">
+<meta property="article:tag" content="Github 徽章">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liuyib.github.io/assets/posts/front-end-unit-test-and-ci/run-main-file-in-node.png"><title>前端单元测试和持续集成 | Liuyib's Blog</title><link ref="canonical" href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.4.0"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><link rel="dns-prefetch" href="https://tajs.qq.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2577876740331235" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-146413033-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-146413033-1');
+}</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?2be584e2ddc153d81489b57ba106c8c0';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://tajs.qq.com/stats?sId=66465986';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":4},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":true},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: {"switchPost":true},
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-flask"></i></span><span class="header-nav-menu-item__text">实验室</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://github.com/liuyib/hexo-theme-stun" target="_blank" rel="noopener"><span class="header-nav-submenu-item__text">🦄 Stun</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-fingerprint"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/reprint/"><span class="header-nav-submenu-item__icon"><i class="fas fa-reply"></i></span><span class="header-nav-submenu-item__text">转载</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">其他</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">相册</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-hand-spock"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liuyib's Blog</div><div class="header-banner-info__subtitle">write code and love life</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">前端单元测试和持续集成</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-06-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.5k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">16分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>前端的单元测试包括但不限于：单元功能测试、UI 测试、兼容性测试等等。一个测试体系大体包括四部分：</p>
+<ul>
+<li>测试运行器（e.g. <span class="exturl"><a class="exturl__link"   href="https://github.com/karma-runner/karma"  target="_blank" rel="noopener">Karma</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）</li>
+<li>测试框架（e.g. <span class="exturl"><a class="exturl__link"   href="https://github.com/mochajs/mocha"  target="_blank" rel="noopener">Mocha</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>, <span class="exturl"><a class="exturl__link"   href="https://github.com/facebook/jest"  target="_blank" rel="noopener">Jest</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>, <span class="exturl"><a class="exturl__link"   href="https://github.com/jasmine/jasmine"  target="_blank" rel="noopener">Jasmine</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>, <span class="exturl"><a class="exturl__link"   href="https://github.com/qunitjs/qunit"  target="_blank" rel="noopener">Qunit</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）</li>
+<li>断言库（e.g. <span class="exturl"><a class="exturl__link"   href="https://github.com/shouldjs/should.js"  target="_blank" rel="noopener">Should</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>, <span class="exturl"><a class="exturl__link"   href="https://github.com/chaijs/chai"  target="_blank" rel="noopener">Chai</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）</li>
+<li>测试覆盖率（e.g. <span class="exturl"><a class="exturl__link"   href="https://github.com/gotwarlost/istanbul"  target="_blank" rel="noopener">Istanbul</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）</li>
+</ul>
+<a id="more"></a>
+<p>本文会通过一个例子，来一步步了解如何进行前端单元测试。</p>
+<blockquote>
+<p>本文举的例子中，没有涉及测试运行器，只涉及测试框架、断言库和测试覆盖率。并以 <code>Mocha + Should + Istanbul</code> 组合为例。</p>
+<p>如果你知道 Karma 是干什么的，并且需要用到它，推荐阅读我的另一篇文章：<a href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/">使用 Karma + Mocha 构建 Web 单元测试环境</a></p>
+</blockquote>
+
+        <h2 id="新建项目"   >
+          <a href="#新建项目" class="heading-link"><i class="fas fa-link"></i></a>新建项目</h2>
+      
+<p>如果你的电脑上没有安装 Node.js，那么你需要访问它的<span class="exturl"><a class="exturl__link"   href="https://nodejs.org/zh-cn/"  target="_blank" rel="noopener">官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，下载并安装到你的电脑上。NPM 是 Node.js 的包管理工具，会随着 Node.js 一起安装。</p>
+<p>然后，我们需要用 NPM（Node Package Manager）来管理依赖包，所以先初始化 NPM 的配置文件 <code>package.json</code>，执行指令：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init -y</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p><code>-y</code> 参数表示不进行询问，直接使用默认的配置。</p>
+</blockquote>
+<p>下面我们在 <code>src</code> 目录下，新建 <code>main.js</code> 文件，并编写一个 <code>factorial</code> 函数（用于求数的阶乘）：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> factorial = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> factorial(n - <span class="number">1</span>) * n;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">require</span>.main === <span class="built_in">module</span>) &#123;</span><br><span class="line">  <span class="comment">// 如果是在命令行中执行 main.js，则此处会执行。</span></span><br><span class="line">  <span class="comment">// 如果 main.js 被其他文件 require，则此处不会执行。</span></span><br><span class="line">  <span class="keyword">var</span> n = <span class="built_in">Number</span>(process.argv[<span class="number">2</span>]);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'factorial('</span> + n + <span class="string">') is'</span>, factorial(n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>运行一下这个文件，看看结果是否正确。执行指令：<code>node ./src/main.js 5</code>，效果如下：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/run-main-file-in-node.png"  alt="" />
+      </p>
+<p>结果是 <code>120</code>，符合预期。但是一个例子并不能说明什么，我们还需要对负数、非数字、小数、很大的数等进行验证，在逐步的验证过程中，代码中的不足也会逐渐暴露出来。所以接下来我们将进行<strong>测试驱动开发</strong>（Test-Driven Development, TDD），通过不断的测试来完善代码。</p>
+
+        <h2 id="编写测试文件"   >
+          <a href="#编写测试文件" class="heading-link"><i class="fas fa-link"></i></a>编写测试文件</h2>
+      
+<p>首先，在 <code>main.js</code> 文件最后添加代码：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exports.factorial = factorial;</span><br></pre></td></tr></table></div></figure>
+<p>这段代码的作用是将 <code>factorial</code> 函数暴露出去，这样才可以在其他文件中 <code>require</code> 这个函数。</p>
+<p>通常，测试文件与所要测试的源文件同名，但是后缀名为 <code>.test.js</code>（表示测试）或 <code>.spec.js</code>（表示规格）。例如，<code>main.js</code> 的测试文件就是 <code>main.test.js</code>：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.test.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> main = <span class="built_in">require</span>(<span class="string">'../src/main'</span>);</span><br><span class="line"><span class="keyword">var</span> should = <span class="built_in">require</span>(<span class="string">'should'</span>);</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'test/main.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  it(<span class="string">'should equal 1 when n === 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    should(main.factorial(<span class="number">0</span>)).equal(<span class="number">1</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>上面的代码中：</p>
+<ul>
+<li>
+<p><code>describe</code> 块称为“测试套件（test suite）”，表示一组相关的测试。它是一个函数，第一个参数是测试套件的名称，第二个参数是一个实际执行的函数。</p>
+</li>
+<li>
+<p><code>it</code> 块称为“测试用例（test case）”，表示一个单独的测试，是测试的最小单位。它也是一个函数，第一个参数是测试用例的名称，第二个参数是一个实际执行的函数。</p>
+</li>
+</ul>
+<p>一个测试文件中，可以包含一个或多个 <code>describe</code> 块，一个 <code>describe</code> 块中可以包含一个或多个 <code>it</code> 块。</p>
+<p>想要运行这个测试文件，需要安装依赖 Mocha 和 Should：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev mocha should</span><br></pre></td></tr></table></div></figure>
+<p>然后，在 <code>package.json</code> 中新建一条 NPM 指令：</p>
+<figure class="highlight"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">"scripts": &#123;</span><br><span class="line">  "test": "./node_modules/.bin/mocha ./test/main.test.js"</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></div></figure>
+<p>该指令的作用就是：使用安装在项目目录中的 Mocha 命令 <code>./node_modules/.bin/mocha</code> 来测试 <code>./test/main.test.js</code> 文件。</p>
+<p>执行这个指令 <code>npm run test</code>，结果如下（可以看到测试通过）：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/mocha-test-one-case.png"  alt="" />
+      </p>
+<p>到这里，我们就使用测试框架 + 断言库，体验了基本的单元测试流程，接下来我们通过不断完善测试用例，来使代码健壮起来。</p>
+
+        <h2 id="完善测试用例"   >
+          <a href="#完善测试用例" class="heading-link"><i class="fas fa-link"></i></a>完善测试用例</h2>
+      
+<p>首先，明确函数功能。我们的 <code>factorial</code> 函数应该有以下功能：</p>
+<ul>
+<li>当 <code>n === 0</code> 时，返回 <code>1</code>。</li>
+<li>当 <code>n &gt; 0</code> 时，返回 <code>factorial(n - 1) * n</code>。</li>
+<li>当 <code>n &lt; 0</code> 时，抛出错误，因为没有意义。</li>
+<li>当 <code>n</code> 不是数字时，抛出错误。</li>
+<li>当 <code>n &gt; 10</code> 时，抛出错误（本文为了演示，只进行 <code>10</code> 以内的阶乘运算）。</li>
+</ul>
+<p>然后，我们根据确定好的功能来完善测试用例：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> main = <span class="built_in">require</span>(<span class="string">'../src/main'</span>);</span><br><span class="line"><span class="keyword">var</span> should = <span class="built_in">require</span>(<span class="string">'should'</span>);</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'test/main.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  it(<span class="string">'should equal 1 when n === 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    should(main.factorial(<span class="number">0</span>)).equal(<span class="number">1</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should equal 1 when n === 1'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    should(main.factorial(<span class="number">1</span>)).equal(<span class="number">1</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should equal 3628800 when n === 10'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    should(main.factorial(<span class="number">10</span>)).equal(<span class="number">3628800</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should throw when n &gt; 10'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      main.factorial(<span class="number">11</span>);</span><br><span class="line">    &#125;.should.throw(<span class="string">'n should &lt;= 10'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should throw when n &lt; 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      main.factorial(<span class="number">-1</span>);</span><br><span class="line">    &#125;.should.throw(<span class="string">'n should &gt;= 0'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should throw when n is not Number'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      main.factorial(<span class="string">'123'</span>);</span><br><span class="line">    &#125;.should.throw(<span class="string">'n should be a Number'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>执行测试指令 <code>npm run test</code>，效果如下：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/mocha-test-some-case-1.png"  alt="" />
+      </p>
+<p>可以看到后面三个测试用例都没有通过，这说明 <code>factorial</code> 函数并不是在所有情况下都可以正常运行，所以我们需要更新 <code>factorial</code> 的实现：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> factorial = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> n !== <span class="string">'number'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'n should be a Number'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'n should &gt;= 0'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (n &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'n should &lt;= 10'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> factorial(n - <span class="number">1</span>) * n;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+<p>再次执行测试指令 <code>npm run test</code>，效果如下：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/mocha-test-some-case-2.png"  alt="" />
+      </p>
+<p>可以看到，所有的测试用例都通过了，这证明 <code>factorial</code> 函数的功能已经符合了我们的预期要求，而且代码健壮性有了很大的提高。</p>
+<p>以上就是 TDD 的基本流程，总的来说就是：<strong>首先明确程序的功能，然后跑测试用例，如果测试用例没有通过，修改程序，直到测试用例通过</strong>。</p>
+
+        <h2 id="生成覆盖率"   >
+          <a href="#生成覆盖率" class="heading-link"><i class="fas fa-link"></i></a>生成覆盖率</h2>
+      
+<p>如果你想知道测试用例是否合理，可以用“代码覆盖率”来判断。一般而言，如果测试用例写的合理，那么代码覆盖率越高越好，但不是绝对的。</p>
+<p>代码覆盖率包括以下几个方面：</p>
+<ul>
+<li><strong>行覆盖率</strong>：是否每一行都执行了</li>
+<li><strong>函数覆盖率</strong>：是否每个函数都调用了</li>
+<li><strong>分支覆盖率</strong>：是否每个 <code>if</code> 代码块都执行了</li>
+<li><strong>语句覆盖率</strong>：是否每个语句都执行了</li>
+</ul>
+<p>生成代码覆盖率，需要用到插件 Istanbul，首先将其安装：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev istanbul</span><br></pre></td></tr></table></div></figure>
+<p>然后，在 <code>package.json</code> 中新建一条 NPM 指令，用于生成覆盖率：</p>
+<figure class="highlight"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">"scripts": &#123;</span><br><span class="line">  "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha"</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p>注意，指令中 <code>_mocha</code> 的下划线不能省略。因为，<code>mocha</code> 和 <code>_mocha</code> 是两个不同的命令，前者会新建一个进程执行测试，而后者是在当前进程（即 Istanbul 所在的进程）执行测试，只有这样， Istanbul 才会捕捉到覆盖率数据。其他测试框架也是如此，必须在同一个进程执行测试。</p>
+</blockquote>
+<p>执行这个指令 <code>npm run coverage</code>，结果如下：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/code-coverage-in-cli-1.png"  alt="" />
+      </p>
+<p>将 <code>coverage/lcov-report</code> 目录下的 <code>index.html</code> 文件在浏览器中运行，可以查看具体的覆盖率。如图所示：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/code-coverage-in-browser.png"  alt="" />
+      </p>
+<p>其实，这次的覆盖率应该是 100%，因为函数在被其他文件引用时 24、25 这两行不会执行，所以没法测。由于这两行代码仅仅是为了刚开始方便演示用，之后我们就不在命令行中测试了，所以直接将这两行语句所在的 <code>if</code> 块删除即可。</p>
+<p>再次执行测试指令，就得到了 100% 的覆盖率：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/code-coverage-in-cli-2.png"  alt="" />
+      </p>
+
+        <h2 id="上传覆盖率"   >
+          <a href="#上传覆盖率" class="heading-link"><i class="fas fa-link"></i></a>上传覆盖率</h2>
+      
+<p>想要展示测试覆盖率，有两个网站可供选择：<span class="exturl"><a class="exturl__link"   href="https://codecov.io/"  target="_blank" rel="noopener">Codecov</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 和 <span class="exturl"><a class="exturl__link"   href="https://coveralls.io/"  target="_blank" rel="noopener">Coveralls</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。本文以 Codecov 为例。</p>
+<p>首先，打开 Codecov 官网，绑定 Github 账号之后，选择要展示测试覆盖率的仓库。</p>
+<p>然后，安装 Codecov：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev codecov</span><br></pre></td></tr></table></div></figure>
+<p>接着，在 <code>package.json</code> 中新建一条 NPM 指令，来上传测试覆盖率：</p>
+<figure class="highlight"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">"script": &#123;</span><br><span class="line">  "codecov": "cat ./coverage/lcov.info | ./node_modules/.bin/codecov"</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p>其中 <code>cat ./coverage/lcov.info</code> 用于读取 <code>coverage</code> 目录下的 <code>lcov.info</code> 文件，<code>./node_modules/.bin/codecov</code> 用于将覆盖率上传到 Codecov 网站。</p>
+</blockquote>
+<p>该指令在接下来配置 CI（Continuous integration, 持续集成）时会用到。</p>
+
+        <h2 id="持续集成"   >
+          <a href="#持续集成" class="heading-link"><i class="fas fa-link"></i></a>持续集成</h2>
+      
+<p>如果每次修改代码之后，都手动进行单元测试，不仅加重工作量，而且容易出错，因此我们需要进行自动化测试，这就用到了持续集成。</p>
+<p>持续集成是一种软件开发实践，每次集成都通过自动化的构建（包括编译，发布，测试等）来验证，从而尽早地发现代码中的错误。</p>
+<p>可供选择的持续集成工具有 <span class="exturl"><a class="exturl__link"   href="https://travis-ci.org/"  target="_blank" rel="noopener">Travis CI</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 和 <span class="exturl"><a class="exturl__link"   href="https://circleci.com/"  target="_blank" rel="noopener">Circle CI</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。本文以 Travis CI 为例。</p>
+
+        <h3 id="使用-travis-ci"   >
+          <a href="#使用-travis-ci" class="heading-link"><i class="fas fa-link"></i></a>使用 Travis CI</h3>
+      
+<p>首先，Travis CI 进入官网后，点击 Sign In 按钮绑定 Github。然后在仓库列表中选择你要进行持续集成的仓库，点击按钮启用：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/travis-ci-settings.png"  alt="" />
+      </p>
+<p>然后，你需要在项目根目录下创建 <code>.travis.yml</code> 文件（如果没有这个文件，Travis CI 会默认执行 <code>npm install</code> 和 <code>npm test</code>），配置文件示例如下：</p>
+<figure class="highlight yml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 要使用的语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 要使用的语言版本</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 缓存 NPM 依赖，加快构建</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">node_modules</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行指令</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">coverage</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指令执行成功后</span></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">codecov</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定分支</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span></span><br></pre></td></tr></table></div></figure>
+<p>最后，将所有修改提交到远程仓库的 master 分支上，就可以看到 Travis CI 正在自动构建。</p>
+
+        <h3 id="展示徽章"   >
+          <a href="#展示徽章" class="heading-link"><i class="fas fa-link"></i></a>展示徽章</h3>
+      
+<p>当 CI 构建完成之后，我们可以通过访问 Travis CI 和 Codecov 的网站查看到详细结果，当然也可以将结果以徽章的形式放入 README，这样更清晰明了。</p>
+<p>Travis CI 的徽章这样获取：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/travis-badge.png"  alt="" />
+      </p>
+<p>Codecov 的徽章这样获取：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/assets/posts/front-end-unit-test-and-ci/codecov-badge.png"  alt="" />
+      </p>
+<p>每当 CI 构建完成，结果就会以徽章的形式，展示在你的项目文档中。</p>
+<hr />
+<p>参考资料：</p>
+<ul>
+<li><span class="exturl"><a class="exturl__link"   href="https://github.com/alsotang/node-lessons/tree/master/lesson6"  target="_blank" rel="noopener">《Node.js 包教不包会》测试用例：mocha，should，istanbul</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liuyib.github.io">liuyib</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/">https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liuyib.github.io/tags/Github-%E5%BE%BD%E7%AB%A0/">Github 徽章</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/assets/others/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/assets/others/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2019/08/20/develop-hexo-theme-from-0-to-1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">从 0 到 1 开发 Hexo 主题杂谈</span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="disqus_thread"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">1.</span> <span class="toc-text">
+          新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写测试文件"><span class="toc-number">2.</span> <span class="toc-text">
+          编写测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完善测试用例"><span class="toc-number">3.</span> <span class="toc-text">
+          完善测试用例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成覆盖率"><span class="toc-number">4.</span> <span class="toc-text">
+          生成覆盖率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传覆盖率"><span class="toc-number">5.</span> <span class="toc-text">
+          上传覆盖率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续集成"><span class="toc-number">6.</span> <span class="toc-text">
+          持续集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-travis-ci"><span class="toc-number">6.1.</span> <span class="toc-text">
+          使用 Travis CI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#展示徽章"><span class="toc-number">6.2.</span> <span class="toc-text">
+          展示徽章</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://cdn.jsdelivr.net/gh/liuyib/picBed@master/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">write code and love life</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/liuyib/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/liuyib/" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">SF</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/liu-yibo-64-65/activities/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知乎</span></a><a class="sidebar-ov-social-item" href="https://juejin.im/user/5ad6b350f265da2397076275/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘金</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="http://eepurl.com/guAE6j" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS 订阅</span></a></span></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span><a href="https://github.com/liuyib" rel="noopener" target="_blank">liuyib</a></span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.4.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>托管于 <a href="https://github.com/liuyib/liuyib.github.io/tree/hexo" rel="noopener" target="_blank">Github</a></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'assist_search.prompt_input');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script data-pjax="">function loadDisqus () {
+  if (!document.getElementById('disqus_thread')) {
+    return;
+  }
+  if (window.DISQUS) {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.url = 'https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/';
+        this.page.identifier = '2019/06/04/front-end-unit-test-and-ci/';
+        this.page.title = '前端单元测试和持续集成';
+      }
+    });
+  } else {
+    var d = document;
+    var sc = d.createElement('script');
+    var se = d.createElement('script');
+
+    if (true) {
+      sc.src = 'https://liuyib.disqus.com/count.js';
+      sc.id = 'dsq-count-scr';
+      sc.async = true;
+      if (true) {
+        sc.setAttribute('data-pjax', '');
+      }
+      (d.head || d.body).appendChild(sc);
+    }
+    se.src = 'https://liuyib.disqus.com/embed.js';
+    (d.head || d.body).appendChild(se);
+  }
+}
+
+if (true) {
+  loadDisqus();
+} else {
+  window.addEventListener('DOMContentLoaded', loadDisqus, false);
+}</script><script src="/js/utils.js?v=2.4.0"></script><script src="/js/stun-boot.js?v=2.4.0"></script><script src="/js/scroll.js?v=2.4.0"></script><script src="/js/header.js?v=2.4.0"></script><script src="/js/sidebar.js?v=2.4.0"></script><script type="application/json" src="/search.json"></script></body></html>
