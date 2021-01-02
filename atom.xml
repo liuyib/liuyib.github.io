@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2020-12-24T09:19:08.743Z</updated>
+  <updated>2021-01-02T08:16:42.652Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Github Discussions for «Stun»</title>
-    <link href="https://liuyib.github.io/2020/12/24/theme-stun-discussions/"/>
-    <id>https://liuyib.github.io/2020/12/24/theme-stun-discussions/</id>
-    <published>2020-12-24T09:19:08.743Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <link href="https://liuyib.github.io/2021/01/02/theme-stun-discussions/"/>
+    <id>https://liuyib.github.io/2021/01/02/theme-stun-discussions/</id>
+    <published>2021-01-02T08:16:42.652Z</published>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
@@ -46,11 +46,11 @@
     <link href="https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/"/>
     <id>https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/</id>
     <published>2020-09-19T17:14:08.000Z</published>
-    <updated>2020-12-24T09:19:08.739Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;2019 年，我在 Github 上开源了自己的第一个开源项目 &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/hexo-theme-stun&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;hexo-theme-stun&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。&lt;/p&gt;
+      &lt;p&gt;2019 年，我在 Github 上开源了自己的第一个开源项目 &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/hexo-theme-stun&quot; &gt;hexo-theme-stun&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。&lt;/p&gt;
     
     </summary>
     
@@ -70,16 +70,15 @@
     <link href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"/>
     <id>https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</id>
     <published>2020-04-18T16:25:07.000Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;SSL/TLS 协议是 HTTPS 中特别重要的一部分，因此有必要深入了解其原理和运作过程。&lt;/p&gt;
 
-        &lt;h2 id=&quot;http-为什么不安全&quot;   &gt;
-          &lt;a href=&quot;#http-为什么不安全&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;HTTP 为什么不安全&lt;/h2&gt;
-      
-&lt;p&gt;HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。&lt;/p&gt;
+        &lt;h2 id=&quot;HTTP-为什么不安全&quot;   &gt;
+          &lt;a href=&quot;#HTTP-为什么不安全&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;HTTP 为什么不安全&lt;/h2&gt;
+      &lt;p&gt;HTTP 是明文传输协议，通信过程和数据传输都没有进行加密，也没有验证通信双方的身份。因此通信过程很容易遭到劫持、窃听、篡改等。&lt;/p&gt;
     
     </summary>
     
@@ -97,7 +96,7 @@
     <link href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/"/>
     <id>https://liuyib.github.io/2020/04/07/css-h-and-v-center/</id>
     <published>2020-04-07T01:04:48.000Z</published>
-    <updated>2020-12-24T09:19:08.739Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
@@ -119,7 +118,7 @@
     <link href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"/>
     <id>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</id>
     <published>2020-03-20T16:04:11.000Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
@@ -145,7 +144,7 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T20:49:16.000Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
@@ -169,11 +168,11 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T18:20:24.000Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github issues 里写&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/blog/issues&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github issues 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;
+      &lt;p&gt;在没有开发自己的 Hexo 主题之前，我都是在 Github issues 里写&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/liuyib/blog/issues&quot; &gt;博客&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，但这样的做法总被小伙伴各种吐槽 (￣_￣ )。想到如果文章多的时候，使用 Github issues 浏览起来不够方便，所以还是换回了 Hexo。&lt;/p&gt;
     
     </summary>
     
@@ -189,16 +188,16 @@
     <link href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"/>
     <id>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</id>
     <published>2019-06-04T22:54:49.000Z</published>
-    <updated>2020-12-24T09:19:08.743Z</updated>
+    <updated>2021-01-02T08:16:42.652Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;前端的单元测试包括但不限于：单元功能测试、UI 测试、兼容性测试等等。一个测试体系大体包括四部分：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;测试运行器（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/karma-runner/karma&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Karma&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
-&lt;li&gt;测试框架（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/mochajs/mocha&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Mocha&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/facebook/jest&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Jest&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/jasmine/jasmine&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Jasmine&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/qunitjs/qunit&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Qunit&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
-&lt;li&gt;断言库（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/shouldjs/should.js&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Should&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/chaijs/chai&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Chai&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
-&lt;li&gt;测试覆盖率（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/gotwarlost/istanbul&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Istanbul&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
+&lt;li&gt;测试运行器（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/karma-runner/karma&quot; &gt;Karma&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
+&lt;li&gt;测试框架（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/mochajs/mocha&quot; &gt;Mocha&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/facebook/jest&quot; &gt;Jest&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/jasmine/jasmine&quot; &gt;Jasmine&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/qunitjs/qunit&quot; &gt;Qunit&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
+&lt;li&gt;断言库（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/shouldjs/should.js&quot; &gt;Should&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/chaijs/chai&quot; &gt;Chai&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
+&lt;li&gt;测试覆盖率（e.g. &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/gotwarlost/istanbul&quot; &gt;Istanbul&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;）&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
