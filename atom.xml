@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuyib.github.io/"/>
-  <updated>2021-01-03T02:10:22.868Z</updated>
+  <updated>2021-01-03T02:15:50.513Z</updated>
   <id>https://liuyib.github.io/</id>
   
   <author>
@@ -21,20 +21,25 @@
     <link href="https://liuyib.github.io/2020/12/22/theme-stun-discussions/"/>
     <id>https://liuyib.github.io/2020/12/22/theme-stun-discussions/</id>
     <published>2020-12-22T13:01:54.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-    &lt;div class=&quot;note-plugin success&quot;&gt;
+      &lt;div class=&quot;note-plugin success&quot;&gt;
       &lt;span class=&quot;note-plugin__icon note-plugin__icon--success&quot;&gt;
-              &lt;i class=&quot;fas
-        
-      
+              &lt;i class=&quot;fas fa-check-circle&quot;&gt;&lt;/i&gt;
+            &lt;/span&gt;
+      &lt;p&gt;如果你正在使用 &lt;a href=&quot;hexo-theme-stun&quot;&gt;«Stun»&lt;/a&gt; 主题，遇到了问题想寻求帮助，请点击该文章的标题，参与 «Stun» 主题的交流讨论。&lt;/p&gt;
+    &lt;/div&gt;
+  
+
+&lt;!--
+首先，我很感谢使用 «Stun» 主题的每一位用户，也很理解在使用过程中遇到问题时的心情。因此，我在项目初期就创建了『Gitter 聊天室』和『QQ 群』来解答各种问题。为了能及时解答问题，我牺牲了生活中很多休息、学习的时间，有时甚至会花费一个下午去帮助用户定位问题。
+
+我做的这些努力目的只有一个，就是为了让 «Stun» 变得更好。但是，随着用户的增多，需要解答的问题也随之增多，TODO...
+--&gt;
+
+&lt;p&gt;由于 GitHub 推出了讨论的功能，因此 «Stun» 主题的所有相关讨论都会在其中进行。原来的『Gitter 聊天室』和『QQ 群』作废。这样做是为了统一管理，希望理解。&lt;/p&gt;
     
     </summary>
     
@@ -46,7 +51,7 @@
     <link href="https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/"/>
     <id>https://liuyib.github.io/2020/09/19/add-commits-to-others-pr/</id>
     <published>2020-09-19T17:14:08.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -70,7 +75,7 @@
     <link href="https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/"/>
     <id>https://liuyib.github.io/2020/04/18/deep-study-ssl-tls/</id>
     <published>2020-04-18T16:25:07.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -96,7 +101,7 @@
     <link href="https://liuyib.github.io/2020/04/07/css-h-and-v-center/"/>
     <id>https://liuyib.github.io/2020/04/07/css-h-and-v-center/</id>
     <published>2020-04-07T01:04:48.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -118,7 +123,7 @@
     <link href="https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/"/>
     <id>https://liuyib.github.io/2020/03/20/use-karma-mocha-chai-to-test/</id>
     <published>2020-03-20T16:04:11.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -144,7 +149,7 @@
     <link href="https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/"/>
     <id>https://liuyib.github.io/2019/09/24/use-pjax-to-your-site/</id>
     <published>2019-09-24T20:49:16.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -168,7 +173,7 @@
     <link href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/"/>
     <id>https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/</id>
     <published>2019-08-20T18:20:24.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
@@ -188,7 +193,7 @@
     <link href="https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/"/>
     <id>https://liuyib.github.io/2019/06/04/front-end-unit-test-and-ci/</id>
     <published>2019-06-04T22:54:49.000Z</published>
-    <updated>2021-01-03T02:10:22.868Z</updated>
+    <updated>2021-01-03T02:15:50.513Z</updated>
     
     <summary type="html">
     
