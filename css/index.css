@@ -2913,6 +2913,41 @@ kbd {
 .paginator-next__icon {
   margin-left: 0.3rem;
 }
+.button-plugin {
+  display: inline-block;
+  border: 1px solid #73c8ff;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.75rem;
+  height: 32px;
+  line-height: 1.375;
+  color: #fff;
+  background-color: #73c8ff;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -o-transition: background-color 0.2s ease;
+  -ms-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+.button-plugin:hover {
+  color: #fff;
+  background-color: #49b1f5;
+}
+.button-plugin > span {
+  display: inline-block;
+}
+.button-plugin--icon-only {
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+}
+.button-plugin__icon {
+  line-height: 1;
+}
+.button-plugin__icon + .button-plugin__content {
+  margin-left: 0.3rem;
+}
 .table-plugin tr {
   -webkit-transition: background-color 0.2s ease;
   -moz-transition: background-color 0.2s ease;
